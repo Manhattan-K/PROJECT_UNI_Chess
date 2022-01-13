@@ -1,0 +1,46 @@
+/*			ZLATKO KOVACHEV {MATRICOLA: 2003380}
+
+__>CLASSE: KING.H
+	Classe figlia di Piece.h.
+	Realizza la figura del Re { int Type = 1 } negli scacchi, esso è il pezzo più debole ma più importante degli scacchi, perché morto il re, finita la partita.
+	Il Re si può muovere solamente di una casell aintorno a se e la cattura ha lo stesso principio.
+
+*/
+
+#ifndef KING_H
+#define KING_H
+
+#include "Piece.h"
+
+class King : public Piece
+{
+	public:
+		//=---------------------------------------------=Costruttore=---------------------------------------------=
+			//Default
+		King() : Piece{} {}
+			//Con parametri [Posizione iniziale, Colore della pedina {*vedi Piece.h}]
+		King(Position& p, bool team) : Piece{ p, 1, team } {}
+
+		//=---------------------------------------------=Copia e spostamento=---------------------------------------------=
+			//Costruttore e assegnamento di copia
+		King(const King& arg);
+		King& operator=(const King& arg);
+			//Costruttore e assegnamento di spostamento
+		King(King&& arg);
+		King& operator=(King&& arg);
+
+		//=---------------------------------------------=Distruttore=---------------------------------------------=
+		~King() {}
+
+		//=---------------------------------------------=Funzioni di King=---------------------------------------------=
+			//Overload di get_moves()
+		std::vector<std::vector<Position>> get_moves(const Chessboard& board);
+
+	private:
+			//Overload di circle()
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) override;
+			//Overload di check_piece()
+		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+};
+
+#endif
