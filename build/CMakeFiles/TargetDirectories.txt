@@ -1,0 +1,5 @@
+D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/CMakeFiles/ChessLib.dir
+D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/CMakeFiles/scacchiera.dir
+D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/CMakeFiles/replay.dir
+D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/CMakeFiles/edit_cache.dir
+D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/CMakeFiles/rebuild_cache.dir

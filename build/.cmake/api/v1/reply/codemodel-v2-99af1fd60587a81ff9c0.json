@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Chess",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ChessLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChessLib-Debug-66661bd818c7fbea5101.json",
+					"name" : "ChessLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "replay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-replay-Debug-b0394665977c228c77c4.json",
+					"name" : "replay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "scacchiera::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-scacchiera-Debug-9c0d7c94c8e1f982b0ae.json",
+					"name" : "scacchiera",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+		"source" : "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

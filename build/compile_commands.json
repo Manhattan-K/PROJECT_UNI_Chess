@@ -1,0 +1,67 @@
+[
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\Chessboard.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\Chessboard.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/Chessboard.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\Computer.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\Computer.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/Computer.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\Log.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\Log.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/Log.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\Position.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\Position.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/Position.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Bishop.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Bishop.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Bishop.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Horse.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Horse.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Horse.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\King.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\King.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/King.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Pawn.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Pawn.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Pawn.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Queen.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Queen.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Queen.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Rook.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Rook.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Rook.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/ChessLib.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\ChessLib.dir\\libraries\\pieces\\Space.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\libraries\\pieces\\Space.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/libraries/pieces/Space.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/scacchiera.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\scacchiera.dir\\src\\Scacchiera.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\src\\Scacchiera.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/src/Scacchiera.cpp"
+},
+{
+  "directory": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\X86_64~2.EXE  @CMakeFiles/replay.dir/includes_CXX.rsp -g   -g -o CMakeFiles\\replay.dir\\src\\Replay.cpp.obj -c \"D:\\Utente\\PROGETTO FINALE\\PROJECT_UNI_Chess\\Project_Files\\src\\Replay.cpp\"",
+  "file": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/Project_Files/src/Replay.cpp"
+}
+]
