@@ -59,6 +59,9 @@ class Computer
 		void side_acquisition(bool flag, Chessboard& cb);
 
 	private:
+		Piece* rand_piece();
+		Position rand_move(Piece* piece, Chessboard& cb);
+
 		bool team;
 		Chessboard board;
 		std::vector<Piece> pieces;

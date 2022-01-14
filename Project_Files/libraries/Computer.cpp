@@ -11,7 +11,14 @@ Computer::Computer()
 	team = false;
 	pieces = {};
 }
+
+Computer::Computer()
+{
+	side_acquisition(flag, cb);
+	//creare un costruttore indipendente dalla Chessboard, come faccio a rendere computer consapevole dei cambiamenti in chessboard?
+}
 //creare costruttore indipendente dalla chessboard, come?
+
 
 // | Costruttore e assegnamento di Copia |
 Computer::Computer(const Computer& pc)
@@ -60,6 +67,7 @@ Position Computer::rand_move(Piece* piece, Chessboard& cb)
 	board = cb;
 	std::vector<std::vector<Position>> m = piece->get_moves(board);
 	std::srand(time(NULL));
+	std::vector<std::vector<Position>> m = piece->get_moves(cb);
 	int rn = rand() % m.size();
 
 	std::vector<Position> n = m[rn];
@@ -68,24 +76,25 @@ Position Computer::rand_move(Piece* piece, Chessboard& cb)
 	return n[rn];
 }
 
-void Computer::exe_move(Piece* piece, Position move)
+void Computer::exe_move()
 {
-	rand_piece();
-	rand_move(piece, board);
+	Piece* r_piece = rand_piece();
+	Position r_move = rand_move(r_piece, board);
+	//trovare un modo per restituire i due valori
 }
+
 
 void Computer::side_acquisition(bool flag, Chessboard& cb)
 {
-
+	board = cb;
+	team = flag;
 	//Dipende da come sar� il get che mi fornir� Filippo
 	//se mi d� un List Condizionato
-
-		team = flag;
-		pieces = board.getList(flag);
+	pieces = board.getList(flag);
 	
 	//se mi d� due List separate.
 
-		team = flag;
+		
 		if (flag == true)
 		{
 			pieces = board.getListWhite();
