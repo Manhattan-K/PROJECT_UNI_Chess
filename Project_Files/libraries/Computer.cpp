@@ -9,29 +9,31 @@
 Computer::Computer() 
 {
 	team = false;
-	board = nullptr;
-	Pieces = {};
+	pieces = {};
 }
-Computer::Computer(bool flag, Chessboard& cb) questa anche no, solo bool 
+
+Computer::Computer()
 {
-	board = cb;
-	SideAcquisition(flag, cb);
+	side_acquisition(flag, cb);
+	//creare un costruttore indipendente dalla Chessboard, come faccio a rendere computer consapevole dei cambiamenti in chessboard?
 }
+//creare costruttore indipendente dalla chessboard, come?
+
 
 // | Costruttore e assegnamento di Copia |
 Computer::Computer(const Computer& pc)
 {
 	team = pc.team;
 	board = pc.board;
-	int dim = pc.Pieces.size();
-	//std::copy(pc.Pieces, dim, Pieces); -> mi d� un problema con i parametri, devo guardarci sopra
+	int dim = pc.pieces.size();
+	//std::copy(pc.pieces, dim, pieces); -> mi d� un problema con i parametri, devo guardarci sopra
 }
 Computer& Computer::operator=(const Computer& pc)
 {
 	team = pc.team;
 	board = pc.board;
-	int dim = pc.Pieces.size();
-	//std::copy (pc.Pieces, dim, Pieces);
+	int dim = pc.pieces.size();
+	//std::copy (pc.pieces, dim, pieces);
 	return *this;
 }
 
@@ -53,45 +55,53 @@ Computer::~Computer()
 }
 
 // | Funzioni | 
-Piece* Computer::RandPiece()
+Piece* Computer::rand_piece()
 {
 	std::srand(time(NULL));
-	int rn = rand() % Pieces.size();
-	return &Pieces[rn];
+	int rn = rand() % pieces.size();
+	return &pieces[rn];
 }
 
-std::vector<Position> Computer::RandMove(Piece* piece, Chessboard& cb)
+Position Computer::rand_move(Piece* piece, Chessboard& cb)
 {
+	board = cb;
+	std::vector<std::vector<Position>> m = piece->get_moves(board);
+	std::srand(time(NULL));
 	std::vector<std::vector<Position>> m = piece->get_moves(cb);
-	std::srand(time(NULL));
 	int rn = rand() % m.size();
-	return m[rn];
+
+	std::vector<Position> n = m[rn];
+	rn = rand() % n.size();
+
+	return n[rn];
 }
 
-void Computer::ExeMove(Piece* piece, Position move)
+void Computer::exe_move()
 {
-
+	Piece* r_piece = rand_piece();
+	Position r_move = rand_move(r_piece, board);
+	//trovare un modo per restituire i due valori
 }
 
-void Computer::SideAcquisition(bool flag, Chessboard& cb)
-{
 
+void Computer::side_acquisition(bool flag, Chessboard& cb)
+{
+	board = cb;
+	team = flag;
 	//Dipende da come sar� il get che mi fornir� Filippo
 	//se mi d� un List Condizionato
-
-		team = flag;
-		Pieces = board.getList(flag);
+	pieces = board.getList(flag);
 	
 	//se mi d� due List separate.
 
-		team = flag;
+		
 		if (flag == true)
 		{
-			Pieces = board.getListWhite();
+			pieces = board.getListWhite();
 		}
 		else
 		{
-			Pieces = board.getListBlack();
+			pieces = board.getListBlack();
 		}
 
 }
