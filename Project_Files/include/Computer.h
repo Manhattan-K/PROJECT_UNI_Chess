@@ -17,14 +17,14 @@
 
 
 	_ Funzioni:
-		- Piece* RandPiece():			Funzione che sceglie una pedina random dalla lista dei pedoni controllati;
+		- Piece* rand_piece():			Funzione che sceglie una pedina random dalla lista dei pedoni controllati;
 
-		- Position RandMove():			Funzione che dal risultato di __Piece* RandPiece()__ decide una delle mosse
+		- Position rand_move():			Funzione che dal risultato di __Piece* rand_piece()__ decide una delle mosse
 										possibili in maniera random;
 
-		- void ExeMove():				Funzione che esegue ci� che � stato determinato in precedenza (Pedone e mossa da eseguire);
+		- void exe_move():				Funzione che esegue ci� che � stato determinato in precedenza (Pedone e mossa da eseguire);
 
-		- void SideAcquisition			Funzione che assegna al mio robot il lato (Black, White) di gioco e le corrispettive pedine;
+		- void side_acquisition			Funzione che assegna al mio robot il lato (Black, White) di gioco e le corrispettive pedine;
 */
 
 #ifndef COMPUTER_H
@@ -53,15 +53,15 @@ class Computer
 		~Computer();
 
 		// | Funzioni | 
-		Piece* RandPiece();
-		Position RandMove(Piece* piece, Chessboard& cb);
-		void ExeMove(Piece* piece, Position move);
-		void SideAcquisition(bool flag, Chessboard& cb);
+		Piece* rand_piece();
+		Position rand_move(Piece* piece, Chessboard& cb);
+		void exe_move(Piece* piece, Position move);
+		void side_acquisition(bool flag, Chessboard& cb);
 
 	private:
 		bool team;
 		Chessboard board;
-		std::vector<Piece> Pieces;
+		std::vector<Piece> pieces;
 };
 
 #endif
