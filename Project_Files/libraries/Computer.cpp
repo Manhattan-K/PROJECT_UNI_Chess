@@ -1,18 +1,18 @@
 /*  Lorenzo Leone 2000160 */
-//*  Nota:Chiedere a Filippo se c'è una funzione per ottenere il vettore dell'intero team.
+//*  Nota:Chiedere a Filippo se c'ï¿½ una funzione per ottenere il vettore dell'intero team.
 
 
 #include "Computer.h"
 #include "Chessboard.h"
 // | Costruttore di Default e Team |  
 /*
-Computer::Computer()
+Computer::Computer() 
 {
 	team = false;
 	board = nullptr;
 	Pieces = {};
 }
-Computer::Computer(bool flag, Chessboard& cb)
+Computer::Computer(bool flag, Chessboard& cb) questa anche no, solo bool 
 {
 	board = cb;
 	SideAcquisition(flag, cb);
@@ -24,7 +24,7 @@ Computer::Computer(const Computer& pc)
 	team = pc.team;
 	board = pc.board;
 	int dim = pc.Pieces.size();
-	//std::copy(pc.Pieces, dim, Pieces); -> mi dà un problema con i parametri, devo guardarci sopra
+	//std::copy(pc.Pieces, dim, Pieces); -> mi dï¿½ un problema con i parametri, devo guardarci sopra
 }
 Computer& Computer::operator=(const Computer& pc)
 {
@@ -76,13 +76,13 @@ void Computer::ExeMove(Piece* piece, Position move)
 void Computer::SideAcquisition(bool flag, Chessboard& cb)
 {
 
-	//Dipende da come sarà il get che mi fornirà Filippo
-	//se mi dà un List Condizionato
+	//Dipende da come sarï¿½ il get che mi fornirï¿½ Filippo
+	//se mi dï¿½ un List Condizionato
 
 		team = flag;
 		Pieces = board.getList(flag);
 	
-	//se mi dà due List separate.
+	//se mi dï¿½ due List separate.
 
 		team = flag;
 		if (flag == true)
