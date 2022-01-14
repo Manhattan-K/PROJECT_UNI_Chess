@@ -54,7 +54,7 @@ class Computer
 
 		// | Funzioni | 
 		Piece* RandPiece();
-		std::vector<Position> RandMove(Piece* piece, Chessboard& cb);
+		Position RandMove(Piece* piece, Chessboard& cb);
 		void ExeMove(Piece* piece, Position move);
 		void SideAcquisition(bool flag, Chessboard& cb);
 

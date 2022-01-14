@@ -131,11 +131,44 @@ void Chessboard::eatBlack(Piece& x)
 		}
 	}
 }
+//metodi che restituiscono la lista di pedine
 
+std::vector<Piece*> Chessboard::get_liveWhite()
+{ return liveWhite; }
 
-bool Chessboard::checkRules()
+std:: vector<Piece*>Chessboard::get_liveBlack()
+{ return liveBlack; }
+
+/*
+Controlla se la partita è finita
+Restituisce: -1 se vincono i neri
+			  0 se è patta
+			  1 se vincono i bianchi
+			  2 se la partita non è finita
+*/
+int Chessboard::checkRules()
 {
-	// il re non puo piu fare mosse
+	// il re non puo piu fare mosse, stallo (PATTA = 0)
+	Chessboard t = Chessboard();
+	for(int c = 0; c < 8; c++)
+		for(int r = 0; r < 8; r++)
+		{
+			Position temp = Position(c, r);
+			Piece* k =get_piece(temp)
+			if(k == new King)
+			{
+				if(k->is_back())
+				{
+					std::vector<std::vector<Position>> m = k->get_moves(t);
+				}
+				else
+				{
+					std::vector<std::vector<Positon>> m = k->get_moves(t);
+				}	
+				
+			}
+		}
+
 
 
 	// rimangono poche pedine
