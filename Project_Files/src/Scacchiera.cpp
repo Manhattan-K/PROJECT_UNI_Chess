@@ -67,8 +67,13 @@ int main()
     }
     if(role == 'c')
     {
+        /*
+
+                -> LEONE HA CAMBIATO I NOMI DEI FILE, CHIEDI A LUI COSA FANNO I VARI METODI PERCHE' ALCUNI SONO NOVI OPPURE NON FANNO LE STESSE <-
+
         Computer white = Computer();
         Computer black = Computer();
+        
         for(int i = 0; i<40 || c.checkRules() == 2; i++)
         {
             Piece* pieceW = white.RandPiece();
@@ -81,6 +86,8 @@ int main()
                 black.ExeMove(pieceB, moveB);
             }
         }
+
+        */
     }
     
     std::cout << "\n\t-><- Il programma compila senza errori, uWu -><-\n";
