@@ -53,8 +53,6 @@ class Computer
 		~Computer();
 
 		// | Funzioni | 
-		Piece* rand_piece();
-		Position rand_move(Piece* piece, Chessboard& cb);
 		void exe_move(Piece* piece, Position move);
 		void side_acquisition(bool flag, Chessboard& cb);
 

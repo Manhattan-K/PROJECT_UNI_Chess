@@ -151,10 +151,15 @@ int Chessboard::checkRules()
 	// il re non puo piu fare mosse, stallo (PATTA = 0)
 	Chessboard t = Chessboard();
 	for(int c = 0; c < 8; c++)
+	{
 		for(int r = 0; r < 8; r++)
 		{
 			Position temp = Position(c, r);
-			Piece* k =get_piece(temp)
+			Piece* k =get_piece(temp);
+			/*	
+
+				FILIPPO MI DA ERRORE QUESTA COSA, CREA PRIMA L'OGGETTO E POI FAI LA VERIFICA, SCRIVIMI DOMANI
+
 			if(k == new King)
 			{
 				if(k->is_back())
@@ -167,7 +172,10 @@ int Chessboard::checkRules()
 				}	
 				
 			}
+			*/
 		}
+	}
+
 
 
 
