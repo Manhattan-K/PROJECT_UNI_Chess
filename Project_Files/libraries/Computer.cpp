@@ -63,7 +63,7 @@ Computer::~Computer()
 */
 Piece* Computer::rand_piece()
 {
-	std::srand(time(NULL));
+	//std::srand(time(NULL));
 	int rn = rand() % pieces.size();
 	return pieces[rn];
 }
@@ -78,7 +78,7 @@ Piece* Computer::rand_piece()
 */
 Position Computer::rand_move(Piece* piece, const Chessboard& cb)
 {
-	std::srand(time(NULL));
+	//std::srand(time(NULL));
 	Chessboard board = cb;
 
 	std::vector<std::vector<Position>> m = piece->get_moves(board);
