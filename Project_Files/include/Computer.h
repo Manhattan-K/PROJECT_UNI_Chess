@@ -4,7 +4,7 @@
 /*
 	_ Classe: Computer
 		Classe incaricata nella gestione del "player" Computer.
-		In sostanza, Computer � un "player" le cui decisioni sono random e generalmente poco intelligenti.
+		In sostanza, Computer è un "player" le cui decisioni sono random e generalmente poco intelligenti.
 
 
 	_ Variabili di Classe:
@@ -22,7 +22,7 @@
 		- Position rand_move():			Funzione che dal risultato di __Piece* rand_piece()__ decide una delle mosse
 										possibili in maniera random;
 
-		- void exe_move():				Funzione che esegue ci� che � stato determinato in precedenza (Pedone e mossa da eseguire);
+		- void exe_move():				Funzione che esegue ciç che è stato determinato in precedenza (Pedone e mossa da eseguire);
 
 		- void side_acquisition			Funzione che assegna al mio robot il lato (Black, White) di gioco e le corrispettive pedine;
 */
@@ -39,7 +39,8 @@ class Computer
 
 		// | Costruttore di Default e Team |
 		Computer();
-		//Computer(bool flag, Chessboard& board);
+		//Computer(bool flag);
+		Computer(bool flag, const Chessboard& cb);
 
 		// | Costruttore e assegnamento di Copia |
 		Computer(const Computer& pc);
@@ -53,16 +54,15 @@ class Computer
 		~Computer();
 
 		// | Funzioni | 
-		void exe_move(Piece* piece, Position move);
-		void side_acquisition(bool flag, Chessboard& cb);
+		std::vector<Position> exe_move(const Chessboard& cb);
+		void side_acquisition(bool flag, const Chessboard& cb);
 
 	private:
 		Piece* rand_piece();
-		Position rand_move(Piece* piece, Chessboard& cb);
+		Position rand_move(Piece* piece, const Chessboard& cb);
 
 		bool team;
-		Chessboard board;
-		std::vector<Piece> pieces;
+		std::vector<Piece*> pieces;
 };
 
 #endif
