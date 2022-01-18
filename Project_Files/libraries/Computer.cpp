@@ -1,9 +1,10 @@
-/*  Lorenzo Leone 2000160 */
+/*  Lorenzo Leone 2000160  */
 
 #include "Computer.h"
 #include "Chessboard.h"
+#include <time.h>
 
-//------------------------------------------------| Costruttori e Distruttore |------------------------------------------------
+//--------------------------------------------------------| Costruttori e distruttore |--------------------------------------------------------
 // | Costruttore di Default|
 Computer::Computer() 
 {
@@ -48,12 +49,9 @@ Computer& Computer::operator=(Computer&& pc)
 	return *this;
 }
 
-
 // | Distruttore |
-Computer::~Computer()
-{
-	//da finire.
-}
+Computer::~Computer(){}
+
 
 //--------------------------------------------------------| Funzioni |--------------------------------------------------------
 /*
@@ -63,7 +61,7 @@ Computer::~Computer()
 */
 Piece* Computer::rand_piece()
 {
-	//std::srand(time(NULL));
+	std::srand(time(NULL));
 	int rn = rand() % pieces.size();
 	return pieces[rn];
 }
@@ -78,7 +76,7 @@ Piece* Computer::rand_piece()
 */
 Position Computer::rand_move(Piece* piece, const Chessboard& cb)
 {
-	//std::srand(time(NULL));
+	std::srand(time(NULL));
 	Chessboard board = cb;
 
 	std::vector<std::vector<Position>> m = piece->get_moves(board);
@@ -126,15 +124,12 @@ void Computer::side_acquisition(bool flag, const Chessboard& cb)
 {
 	Chessboard board = cb;
 	team = flag;
-
-	std::vector<Piece*> whites = board.get_liveWhite();
-	std::vector<Piece*> blacks = board.get_liveBlack();
 	if (team == true)
 	{
-		std::copy(whites.begin(), whites.end(), pieces.begin());
+		pieces = board.get_liveWhite();
 	}
 	else
 	{
-		std::copy(blacks.begin(), blacks.end(), blacks.begin());
+		pieces = board.get_liveBlack();
 	}
 }
