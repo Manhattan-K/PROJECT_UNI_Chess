@@ -38,6 +38,16 @@ class Space : public Piece
 	private:
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves) {}
+			//Blocco delle funzioni a cui non facciamo l'override perché non necessario
+		void up(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 };
 
 #endif

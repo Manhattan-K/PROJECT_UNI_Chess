@@ -138,4 +138,18 @@ CMakeFiles/scacchiera.dir/src/Scacchiera.cpp.obj: \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Computer.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Chessboard.h \
- D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Log.h
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Log.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/fstream \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/codecvt.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/fstream.tcc \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Space.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/King.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Queen.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Pawn.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Horse.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Bishop.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Rook.h

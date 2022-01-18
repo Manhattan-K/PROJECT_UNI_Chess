@@ -137,4 +137,7 @@ CMakeFiles/ChessLib.dir/libraries/Computer.cpp.obj: \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
- D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Chessboard.h
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Chessboard.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/x86_64-w64-mingw32/include/time.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/x86_64-w64-mingw32/include/_timeval.h \
+ C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/x86_64-w64-mingw32/include/pthread_time.h

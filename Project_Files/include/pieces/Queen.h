@@ -2,8 +2,8 @@
 
 __>CLASSE: QUEEN.H
 	Classe figlia di Piece.h.
-	Realizza la figura della Regina { int Type = 2 } negli scacchi, esso è il pezzo più potente degli scacchi:
-	la Regina si può muovere in tutte le direzioni in linea retta da essa.
+	Realizza la figura della Regina { int Type = 2 } negli scacchi, esso ï¿½ il pezzo piï¿½ potente degli scacchi:
+	la Regina si puï¿½ muovere in tutte le direzioni in linea retta da essa.
 
 */
 
@@ -48,6 +48,8 @@ class Queen : public Piece
 		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) override;
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perchÃ© non necessario
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 };
 
 #endif

@@ -2,17 +2,17 @@
 
 __>CLASSE: PAWN.H
 	Classe figlia di Piece.h.
-	Realizza la figura del Pedone { int Type = 3 } negli scacchi, esso si puÚ muovere solo di 1 posizione in avanti (2 se non si Ë mai mosso durante la partita) e puÚ "mangiare" le pedine che si trovano nelle posizioni
+	Realizza la figura del Pedone { int Type = 3 } negli scacchi, esso si puÔøΩ muovere solo di 1 posizione in avanti (2 se non si ÔøΩ mai mosso durante la partita) e puÔøΩ "mangiare" le pedine che si trovano nelle posizioni
 	N-E e N-W a distanza di 1 dalla pedina
 
 __>VARIABILI DI CLASSE
-	- bool moved:		Variabile che ci dice se il pedone si Ë mai mosso durante la partita o deve ancora farlo
+	- bool moved:		Variabile che ci dice se il pedone si ÔøΩ mai mosso durante la partita o deve ancora farlo
 
 __>FUNZIONI
 	- ahead:			Controlla le posizioni che si trovano davanti a se
 	- cross_left:		Controlla la posizione che si trova a N-W
 	- cross_right:		Controlla la posizione che si trova a N-E
-	- has_moved:		Ci dice se la pedina si Ë mai mossa [true --> mossa]
+	- has_moved:		Ci dice se la pedina si ÔøΩ mai mossa [true --> mossa]
 															[false --> mai mossa]
 
 */
@@ -34,6 +34,16 @@ class Pawn : public Piece
 		void cross_right(Chessboard& board, std::vector<std::vector<Position>>& moves);
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perch√© non necessario
+		void up(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 
 	public:
 		//=---------------------------------------------=Costruttore=---------------------------------------------=

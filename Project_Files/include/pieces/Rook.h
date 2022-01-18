@@ -3,14 +3,14 @@
 __>CLASSE: ROOK.H
 	Classe figlia di Piece.h.
 	Realizza la figura della Torre { int Type = 6 } negli scacchi.
-	La torre si muove nelle direzioni "cardinali" alla sua posizione, cioË in linea retta a N, W, E e S {*vedi Piece.h per capire le lettere}
+	La torre si muove nelle direzioni "cardinali" alla sua posizione, cioÔøΩ in linea retta a N, W, E e S {*vedi Piece.h per capire le lettere}
 
 __>VARIABILI DI CLASSE
-	- bool moved:		Variabile che ci dice se la torre si Ë mai mossa durante la partita o deve ancora 
+	- bool moved:		Variabile che ci dice se la torre si ÔøΩ mai mossa durante la partita o deve ancora 
 						farlo, e quindi si trova ancora nell'angolo iniziale [Utile per arrocco]
 
 __>FUNZIONI
-	- has_moved:		Ci dice se la pedina si Ë mai mossa [true --> mossa]
+	- has_moved:		Ci dice se la pedina si ÔøΩ mai mossa [true --> mossa]
 															[false --> mai mossa]
 
 */
@@ -33,6 +33,12 @@ class Rook : public Piece
 		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) override;
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perch√© non necessario
+		void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 
 	public:
 		//=---------------------------------------------=Costruttore=---------------------------------------------=

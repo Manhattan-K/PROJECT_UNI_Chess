@@ -133,7 +133,7 @@ CMakeFiles/scacchiera.dir/clean:
 # Target rules for target CMakeFiles/replay.dir
 
 # All Build rule for target.
-CMakeFiles/replay.dir/all:
+CMakeFiles/replay.dir/all: CMakeFiles/ChessLib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\replay.dir\build.make CMakeFiles/replay.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\replay.dir\build.make CMakeFiles/replay.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Utente\PROGETTO FINALE\PROJECT_UNI_Chess\build\CMakeFiles" --progress-num=13,14 "Built target replay"
@@ -141,7 +141,7 @@ CMakeFiles/replay.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/replay.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Utente\PROGETTO FINALE\PROJECT_UNI_Chess\build\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Utente\PROGETTO FINALE\PROJECT_UNI_Chess\build\CMakeFiles" 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/replay.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Utente\PROGETTO FINALE\PROJECT_UNI_Chess\build\CMakeFiles" 0
 .PHONY : CMakeFiles/replay.dir/rule

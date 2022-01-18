@@ -6,11 +6,19 @@
 #include "Log.h"
 #include "Piece.h"
 #include "Space.h"
+
+#include "King.h"
+#include "Queen.h"
+#include "Pawn.h"
+#include "Horse.h"
+#include "Bishop.h"
+#include "Rook.h"
+
 #include <iostream>
 
 int main()
 {
-    Chessboard c = Chessboard();
+    Chessboard c{};
     char role;
     do
     {
@@ -135,7 +143,26 @@ int main()
                 std::cout<<"Partita finita in parità";
         }
     }
-    
+
     std::cout << "\n\t-><- Il programma compila senza errori, uWu -><-\n";
+    char ch{};
+    std::cin >> ch;
     return 0;
 }
+
+
+// ROBA DI ZLATKO PER VEDERE SE LE MIE FUNZIONI FUNZIONANO
+//Bishop b{};
+    //std::vector<std::vector<Position>> vec = b.get_moves(c);
+    /*
+    for(int i = 0; i < vec[0].size(); i++)
+    {
+        Position pos = vec[0][i];
+        std::cout << '\n' << '(' << pos.get_letter() << ',' << pos.get_number() << ')';
+    }
+    for(int i = 0; i < vec[1].size(); i++)
+    {
+        Position pos = vec[1][i];
+        std::cout << '\n' << '(' << pos.get_letter() << ',' << pos.get_number() << ')';
+    }
+    */
