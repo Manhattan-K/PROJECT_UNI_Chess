@@ -6,9 +6,9 @@ __>CLASSE: PIECE.H
 
 __>VARIABILI DI CLASSE
 	- Position pos:		Variabile Position& che ricorda la posizione della pedina nella scacchiera
-						Se la Pos == {8, 8} la pedina non è utilizzabile, è stata mangiata
+						Se la Pos == {8, 8} la pedina non ï¿½ utilizzabile, ï¿½ stata mangiata
 	
-	- bool alive:		Variabile che ci dice se la pedine è viva o morta	[true --> viva]
+	- bool alive:		Variabile che ci dice se la pedine ï¿½ viva o morta	[true --> viva]
 																			[false --> morta]
 	
 	- int type:			In base al numero (0,1,2,3,4,5,6) sappiamo il tipo di pedina
@@ -20,19 +20,19 @@ __>VARIABILI DI CLASSE
 							- 5 == Cavallo (Horse)
 							- 6 == Torre (Rook)
 
-	- bool team:		In base al vaore booleano sappiamo se la pedina è bianca o nera		[true --> bianca]
+	- bool team:		In base al vaore booleano sappiamo se la pedina ï¿½ bianca o nera		[true --> bianca]
 																							[false --> nera]
 
 __>FUNZIONI
 	
 	- vector<vector<Position>> get_moves(const Chessboard& board)
-		Funzione che restituisce un vettore di due vettori, contenenti con tutte le posizioni valide in cui la pedina si può muovere:
-			- 1° Vettore -> vec[0]:	ci sono tutte le posizioni in cui la pedina si può liberamente muovere
-			- 2° Vettore -> vec[1]:	ci sono tutte le posizioni in cui la pedina può effettuare un'azione di mangiare una pedina aversaria
+		Funzione che restituisce un vettore di due vettori, contenenti con tutte le posizioni valide in cui la pedina si puï¿½ muovere:
+			- 1ï¿½ Vettore -> vec[0]:	ci sono tutte le posizioni in cui la pedina si puï¿½ liberamente muovere
+			- 2ï¿½ Vettore -> vec[1]:	ci sono tutte le posizioni in cui la pedina puï¿½ effettuare un'azione di mangiare una pedina aversaria
 		Necessita dell'oggetto Chessboard su cui avviene la partita e in cui ci sono tutte le posizioni delle pedine
 	
 
-	- Esempio di una pedina circondata da posti in cui si può muovere ([] <-- spazio di movimento) con acronimi per
+	- Esempio di una pedina circondata da posti in cui si puï¿½ muovere ([] <-- spazio di movimento) con acronimi per
 	  definire meglio le posizioni attorno alla pedina.
 			LEGGENDA:	N = Nord, W = Ovest, E = Est, S = Sud, P = Pedina
 
@@ -55,13 +55,13 @@ __>FUNZIONI
 	- get...:					Funzioni get che ritornano il valore della variabili di classe
 	- set_piece_position:		Utile per cambiare la posizione della pedina
 	
-	- is_black:				Ritorna true se la pedina è una pedina nera
-	- is_white:				Ritorna true se la pedina è una pedina bianca
+	- is_black:				Ritorna true se la pedina ï¿½ una pedina nera
+	- is_white:				Ritorna true se la pedina ï¿½ una pedina bianca
 	- is_same_team:			Ritorna true se le pedine sono dello stesso colore, false altrimenti
 
 	- check_piece:		Questa funzione esegue il controllo della pedina puntata da Piece* target e in base ai
 						vari casi decide se inserire la posizione nel vettore {Vettore di get_moves()} dato.
-							[La funzione può variare da classe a classe]
+							[La funzione puï¿½ variare da classe a classe]
 */
 
 #ifndef PIECE_H
@@ -70,8 +70,8 @@ __>FUNZIONI
 #include <vector>
 #include "Position.h"
 
-	/*Dichiarazione della classe Chessboard perché le funzioni devono ricevere un riferimento a un oggetto di tipo
-	Chessboard e dato che la classe non è ancora definita, dichairandola solamente prima non abbiamo problemi di 
+	/*Dichiarazione della classe Chessboard perchï¿½ le funzioni devono ricevere un riferimento a un oggetto di tipo
+	Chessboard e dato che la classe non ï¿½ ancora definita, dichairandola solamente prima non abbiamo problemi di 
 	cicli di include*/
 class Chessboard;
 
@@ -83,7 +83,7 @@ class Piece
 		Position pos{};
 			//Mantiene traccia dello stato della pedina (giocabile o non giocabile)
 		bool alive{};
-			//Mantiene traccia di che tipo è la pedina 
+			//Mantiene traccia di che tipo ï¿½ la pedina 
 		int type{};
 			//Ricorda il colore della pedina [true --> bianca] [false -- > nera]
 		bool team{};
@@ -99,15 +99,15 @@ class Piece
 		virtual void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves) = 0;
 
 			//Funzioni per il movimento {Descrizione funzioni all'allinizio del file} utilizzabili solo dalle classi figlie
-		virtual void up(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void right(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void down(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void left(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves);
-		virtual void circle(Chessboard& board, std::vector<std::vector<Position>>& moves);
+		virtual void up(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void right(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void down(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void left(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
+		virtual void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) = 0;
 
 	public:
 		//=---------------------------------------------=Disabilitazione copia=---------------------------------------------=

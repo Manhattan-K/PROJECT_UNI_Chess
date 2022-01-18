@@ -2,8 +2,8 @@
 
 __>CLASSE: KING.H
 	Classe figlia di Piece.h.
-	Realizza la figura del Re { int Type = 1 } negli scacchi, esso è il pezzo più debole ma più importante degli scacchi, perché morto il re, finita la partita.
-	Il Re si può muovere solamente di una casell aintorno a se e la cattura ha lo stesso principio.
+	Realizza la figura del Re { int Type = 1 } negli scacchi, esso ï¿½ il pezzo piï¿½ debole ma piï¿½ importante degli scacchi, perchï¿½ morto il re, finita la partita.
+	Il Re si puï¿½ muovere solamente di una casell aintorno a se e la cattura ha lo stesso principio.
 
 */
 
@@ -41,6 +41,15 @@ class King : public Piece
 		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) override;
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perchÃ© non necessario
+		void up(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 };
 
 #endif

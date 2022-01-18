@@ -92,6 +92,7 @@ replay_EXTERNAL_OBJECTS =
 
 replay.exe: CMakeFiles/replay.dir/src/Replay.cpp.obj
 replay.exe: CMakeFiles/replay.dir/build.make
+replay.exe: libChessLib.a
 replay.exe: CMakeFiles/replay.dir/linklibs.rsp
 replay.exe: CMakeFiles/replay.dir/objects1.rsp
 replay.exe: CMakeFiles/replay.dir/link.txt

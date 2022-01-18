@@ -21,3 +21,4 @@ add_executable(scacchiera src/Scacchiera.cpp)
 add_executable(replay src/Replay.cpp)
 
 target_link_libraries(scacchiera ChessLib)
+target_link_libraries(replay ChessLib)

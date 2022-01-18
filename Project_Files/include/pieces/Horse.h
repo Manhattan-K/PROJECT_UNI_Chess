@@ -3,12 +3,12 @@
 __>CLASSE: HORSE.H
 	Classe figlia di Piece.h.
 	Realizza la figura del Cavallo { int Type = 5 } negli scacchi.
-	Il cavallo è l'unica pedina che può "scavalcare" le altre pedine del gioco perché i suoi movimenti sono caratterizzati
+	Il cavallo ï¿½ l'unica pedina che puï¿½ "scavalcare" le altre pedine del gioco perchï¿½ i suoi movimenti sono caratterizzati
 	da "salti" a una distanza prefissata dalla posizione iniziale: il cavallo si sposta di 2 posizioni in una direzione e di una posizione nella 
 	direzione perpendicolare dalla posizione raggiunta dai primi due movimenti, formando una L
 
 		  1  2  3  4  5
-		 [ ][x][ ][x][ ]			Esempio:	Il cavallo si trova nella posizione C e si può muovere 
+		 [ ][x][ ][x][ ]			Esempio:	Il cavallo si trova nella posizione C e si puï¿½ muovere 
 		 [x][ ][ ][ ][x]						nelle direzioni contrassegnate da una x 
 		 [ ][ ][C][ ][ ]
 		 [x][ ][ ][ ][x]
@@ -52,6 +52,16 @@ class Horse : public Piece
 		void jump(Chessboard& board, std::vector<std::vector<Position>>& moves);
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perchÃ© non necessario
+		void up(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void up_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 };
 
 #endif

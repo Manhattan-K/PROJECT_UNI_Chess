@@ -3,7 +3,7 @@
 __>CLASSE: BISHOP.H
 	Classe figlia di Piece.h.
 	Realizza la figura dell'Alfiere { int Type = 4 } negli scacchi.
-	L'Alfiere si può muovere solo sulle diagonali del colore della casella su cui è posizionato.
+	L'Alfiere si puï¿½ muovere solo sulle diagonali del colore della casella su cui ï¿½ posizionato.
 
 */
 
@@ -44,6 +44,12 @@ class Bishop : public Piece
 		void down_right(Chessboard& board, std::vector<std::vector<Position>>& moves) override;
 			//Overload di check_piece()
 		void check_piece(Piece* target, Position& pos, std::vector<std::vector<Position>>& moves);
+			//Blocco delle funzioni a cui non facciamo l'override perchÃ© non necessario
+		void up(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void right(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void down(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void left(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
+		void circle(Chessboard& board, std::vector<std::vector<Position>>& moves) {}
 };
 
 #endif
