@@ -98,4 +98,8 @@ std::vector<Position> Log::read_xy(std::string s)
         std::cout<<"Dati acquisibili dal file " << s << " terminati!";
         file.close();     
     }
-}
+    /*
+    NON SO SE E' GIUSTO MA TI SERVE UN RETURN DI UN VETTORE, MAGARI RITORNA UN VETTORE VUOTO SE PROPRIO NON DOVRESTI RITORNARE NULLA
+    */
+    return move;
+    }
