@@ -1,4 +1,4 @@
-/*  Nome di chi fa il file  */
+/*  Lorenzo Leone 2000160  */
 
 #include "Position.h"
 #include "Chessboard.h"
@@ -6,5 +6,6 @@
 
 int main()
 {
+
     return 0;
 }

@@ -2,18 +2,21 @@
 
 
 /*
+--------| VARIABILI |--------------------------------------------------
     std::fstream file :
             corrisponde al file txt su cui verranno scritte le mosse eseguite durante la partita
 
     std::string title :
             titolo del file txt
 
+--------| COSTRUTTORI |------------------------------------------------
     Log() :
             costruttore di default della classe Log, ha come titolo "Log.txt"
 
     Log(std::string title) :
             costruttore che crea un file txt con titolo custom (inserito a parametro)
 
+--------| FUNZIONI |---------------------------------------------------
     write_xy(std::string s, Position a, Position b) :
             funzione che ha come parametri
                 1) std::string s : il titolo del txt su cui salvare le mosse
