@@ -1,4 +1,30 @@
 /*  FILIPPO FRANCESCHETTO  */
+/*
+Chessboard definisce la scacchiera e tiene traccia di tutte le posizione delle varie pedine.
+Inoltre implementa le regole per la fine della partita
+
+		 shift(Position start, Position end);		EFFETTUA IL MOVIMENTO DELLA PEDINA
+		  
+		 eatWhite(Piece& x);		EFFETTUA LA MANGIATA DA PARTE DI UNA PEDINA NERA
+
+		 eatBlack(Piece& x);		EFFETTUA LA MANGIATA DA PARTE DI UNA PEDINA BIANCA
+
+		 get_piece(const Position& pos);	RESTITUISCE LA PEDINA CHE SI TROVA IN UNA DETERMINATA POSIZIONE
+
+		 get_liveWhite();	RESTITUISCE UN VETTORE DI POSIZIONI DOVE SI TROVANO LE PEDINE BIANCHE
+
+		 get_liveBlack();	RESTITUISCE UN VETTORE DI POSIZIONI DOVE SI TROVANO LE PEDINE NERE
+
+		 canMove(bool colour);	RESTITUISCE SE UNA SQUADRA PUO' MUOVERE UNA PEDINA
+	
+	FUNZIONI CHE DETERMINANO LA FINE DELLA PARTITA
+		 checkRules(Chessboard gameBoard);   	
+
+		 alreadySeen(std::vector<Chessboard> moveSequences, Chessboard gameBoard); CONTROLLA SE LA POSIZIONE CORRENTE 
+		 																		   E' GIA STATA VISTA 2 VOLTE
+		 par(int move, Chessboard gameBoard);		CONTROLLA SE UNO DEI 2 SFIDANTI NON HA MOSSO NESSUN 
+		 											PEDONE E NON PUO FARE ALTRE MOSSE
+*/
 
 #include "Chessboard.h"
 #include "Piece.h"
@@ -13,32 +39,32 @@
 //costruttore
 Chessboard::Chessboard()
 {
-	/*
+	
 	//setto gli spazi con Space() 
 	for (int r = 2; r < 5; r++)
 		for (int c = 0; c < 8; c++)
 		{
 			Position box = Position(c, r);
-			matrix[c][r] = new Space(box);
+			matrix[r][c] = new Space(box);
 		}
 	//per ogni posizione nella matrice assegno un tipo di pedina
 	for (int c = 0; c < 8; c++)
 	{
 		Position b = Position(c, 1);
-		matrix[c][1] = new Pawn(b, false);
+		matrix[1][c] = new Pawn(b, false);
 		Position w = Position(c, 6);
-		matrix[c][6] = new Pawn(w, true);
+		matrix[6][c] = new Pawn(w, true);
 		b.set_position(c, 0);
 		w.set_position(c, 7);
 		if (c == 0 || c == 7)
 		{
-			matrix[c][0] = new Rook(b, false);
-			matrix[c][7] = new Rook(w, true);
+			matrix[0][c] = new Rook(b, false);
+			matrix[7][c] = new Rook(w, true);
 		}
 		if (c == 1 || c == 6)
 		{
-			matrix[c][0] = new Horse(b, false);
-			matrix[c][7] = new Horse(w, true);
+			matrix[0][c] = new Horse(b, false);
+			matrix[7][c] = new Horse(w, true);
 		}
 		if (c == 2 || c == 5)
 		{
@@ -47,27 +73,95 @@ Chessboard::Chessboard()
 		}
 		if (c == 3)
 		{
-			matrix[c][0] = new Queen(b, false);
-			matrix[c][7] = new Queen(w, true);
+			matrix[0][c] = new Queen(b, false);
+			matrix[7][c] = new Queen(w, true);
 		}
 		if (c == 4)
 		{
-			matrix[c][0] = new King(b, false);
-			matrix[c][7] = new King(w, true);
+			matrix[0][c] = new King(b, false);
+			matrix[7][c] = new King(w, true);
 		}
 	}
 	for (int c = 0; c < 8; c++)
 	{
-		liveBlack.push_back(matrix[c][0]);
-		liveBlack.push_back(matrix[c][1]);
-		liveWhite.push_back(matrix[c][6]);
-		liveWhite.push_back(matrix[c][7]);
+		liveBlack.push_back(matrix[0][c]);
+		liveBlack.push_back(matrix[1][c]);
+		liveWhite.push_back(matrix[6][c]);
+		liveWhite.push_back(matrix[7][c]);
 	}
-	*/
+}
+
+Chessboard& Chessboard::operator<<(const Chessboard& gameBoard)
+{
+	char temp[8][8];
+	for(int c = 0; c < 8; c++)
+		for(int r = 0 ; r < 8; r++)
+		{
+			Position pos = Position(c, r);
+			if(matrix[r][c] == new Pawn(pos, false))
+				temp[r][c] = 'P';
+			else if(matrix[r][c] == new Pawn(pos, true))
+				temp[r][c] = 'p';
+			else if(matrix[r][c] == new Rook(pos, false))
+				temp[r][c] = 'T';
+			else if(matrix[r][c] == new Rook(pos, true))
+				temp[r][c] = 't';
+			else if(matrix[r][c] == new Horse(pos, false))
+				temp[r][c] = 'C';
+			else if(matrix[r][c] == new Horse(pos, true))
+				temp[r][c] = 'c';
+			else if(matrix[r][c] == new Bishop(pos, false))
+				temp[r][c] = 'A';
+			else if(matrix[r][c] == new Bishop(pos, true))
+				temp[r][c] = 'a';
+			else if(matrix[r][c] == new Queen(pos, false))
+				temp[r][c] = 'D';
+			else if(matrix[r][c] == new Queen(pos, true))
+				temp[r][c] = 'd';
+			else if(matrix[r][c] == new King(pos, false))
+				temp[r][c] = 'R';
+			else if(matrix[r][c] == new King(pos, true))
+				temp[r][c] = 'r';
+			else
+				temp[r][c] = ' ';
+		}
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			std::cout<<temp[r][c];
+}
+
+bool Chessboard::operator==(Chessboard& first)
+{
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			if(first.matrix[r][c] != matrix[r][c])
+				return false;
+	return true;
+}
+
+Chessboard::Chessboard(const Chessboard& gameBoard)
+{
+	liveWhite = gameBoard.liveWhite;
+	liveBlack = gameBoard.liveBlack;
+	Piece* matrix[8][8];
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			matrix[r][c] = gameBoard.matrix[r][c];
+}
+
+Chessboard& Chessboard::operator=(const Chessboard& gameBoard)
+{
+	liveWhite = gameBoard.liveWhite;
+	liveBlack = gameBoard.liveBlack;
+	Piece* matrix[8][8];
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			matrix[r][c] = gameBoard.matrix[r][c];
+	return *this;
 }
 
 //distruttore
-Chessboard::~Chessboard() {}//finire
+Chessboard::~Chessboard() {}
 
 //spostamento di una pedina
 void Chessboard::shift(Position start, Position end)
@@ -107,6 +201,7 @@ void Chessboard::eatWhite(Piece& x)
 		}
 	}
 }
+
 void Chessboard::eatBlack(Piece& x)
 {
 	int length = liveBlack.size();
@@ -139,6 +234,20 @@ std::vector<Piece*> Chessboard::get_liveWhite()
 std:: vector<Piece*>Chessboard::get_liveBlack()
 { return liveBlack; }
 
+bool Chessboard::canMove(bool colour, Chessboard gameBoard)
+{
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; r++)
+			if(matrix[r][c]->get_type() != 0)
+				if(matrix[r][c]->get_team() == colour)
+				{
+					std::vector<std::vector<Position>> move = matrix[r][c]->get_moves(gameBoard);
+					if(move[0].size() != 0 || move[1].size() != 1)
+						return true;
+				}
+	return false;
+}
+
 /*
 Controlla se la partita è finita
 Restituisce: -1 se vincono i neri
@@ -146,55 +255,94 @@ Restituisce: -1 se vincono i neri
 			  1 se vincono i bianchi
 			  2 se la partita non è finita
 */
-int Chessboard::checkRules()
+int Chessboard::checkRules(Chessboard gameBoard)
 {
-	// il re non puo piu fare mosse, stallo (PATTA = 0)
-	Chessboard t = Chessboard();
-	for(int c = 0; c < 8; c++)
+	//rimangono poche pedine (PATTA)
+	if(liveBlack.size() <= 2 && liveWhite.size() <= 2)
+		return 0;
+	
+	//no mosse legali, re non in scacco(PATTA)
+	//per il bianco
+	if(!canMove(true, gameBoard))
 	{
 		for(int r = 0; r < 8; r++)
-		{
-			Position temp = Position(c, r);
-			Piece* k =get_piece(temp);
-			/*	
-
-				FILIPPO MI DA ERRORE QUESTA COSA, CREA PRIMA L'OGGETTO E POI FAI LA VERIFICA, SCRIVIMI DOMANI
-
-			if(k == new King)
+			for(int c = 0; c < 8; c++)
 			{
-				if(k->is_back())
+				Position temp = Position(c, r);
+				Piece* k = get_piece(temp);
+				if(k == new King() && k->get_type() == true)
 				{
-					std::vector<std::vector<Position>> m = k->get_moves(t);
+					std::vector<std::vector<Position>> move = k->get_moves(gameBoard);
+					if(move[0].size() == 0 & move[1].size() == 0)
+						return 0;
 				}
-				else
-				{
-					std::vector<std::vector<Positon>> m = k->get_moves(t);
-				}	
-				
 			}
-			*/
-		}
 	}
-
-
-
-
-	// rimangono poche pedine
-	if (liveBlack.size() <= 2 && liveWhite.size() <= 2)
+	//per il nero
+	if(!canMove(false, gameBoard))
 	{
-		std::cout << "Partita patta";
-		return false;
+		for(int r = 0; r < 8; r++)
+			for(int c = 0; c < 8; c++)
+			{
+				Position temp = Position(c, r);
+				Piece* k = get_piece(temp);
+				if(k == new King() && k->get_type() == false)
+				{
+					std::vector<std::vector<Position>> move = k->get_moves(gameBoard);
+					if(move[0].size() == 0 && move[1].size() == 0)
+						return 0;
+				}
+			}
 	}
-
-	// Posizione gia vista
-
-	//50 mosse
-	int mosse = 0;
-	if (mosse < 50)
-		return true;
-	else
-		return false;
 }
+
+//Posizione già vista 2 volte
+int Chessboard::alreadySeen(std::vector<Chessboard> moveSequences, Chessboard gameBoard)
+{
+	int seen = 0;
+	int dim = moveSequences.size();
+	for(int i = 0; i < dim; i++)
+		if(moveSequences[i] == gameBoard)
+			seen++;
+	if(seen == 2)
+		return 0;
+	else
+		return 2;
+}
+
+// 50 mosse gia fatte senza mangiare e muovere pedoni
+int Chessboard::par(int move, Chessboard gameBoard)
+{
+	if(move == 50)
+	{
+		//per il bianco
+		int count = 0;
+		for(int c = 0; c < 8; c++)
+		{
+			Position w = Position(c, 1);
+			if(matrix[1][c] != new Pawn(w, false))
+				count++;
+		}
+		std::vector<Piece*> liveW = get_liveWhite();
+		if(liveW.size() == 16 && count == 0)
+			return 0;
+
+		//per il nero
+		count = 0;
+		for(int c = 0; c < 8; c++)
+		{
+			Position b = Position(c, 6);
+			if(matrix[6][c] != new Pawn(b, true))
+				count++;
+		}
+		std::vector<Piece*> liveB = get_liveBlack();
+		if(liveB.size() == 16 && count == 0)
+			return 0;
+	}
+	else
+		return 2;
+}
+
 //restituisce la pedina nella posizione richiesta
 Piece* Chessboard::get_piece(const Position& pos)
 {

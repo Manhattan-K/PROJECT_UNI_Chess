@@ -18,7 +18,8 @@
 
 int main()
 {
-    Chessboard c{};
+    Chessboard gameBoard{};
+    std::vector<Chessboard> moveSequences;
     char role;
     do
     {
@@ -28,10 +29,13 @@ int main()
     } while (role != 'c' && role != 'p');
     if(role == 'p')
     {
+        int move = 0;
         Computer black = Computer();
         std::vector<Position> b;
         do
         {
+            moveSequences.push_back(gameBoard);
+
            std::string white;
            bool condition = false;
            //scelta mossa utente bianco
@@ -50,7 +54,7 @@ int main()
                else
                    condition = false;
                 Position end = Position(letterE, numberE);
-                if(c.get_piece(end) == new Space()) 
+                if(gameBoard.get_piece(end) == new Space()) 
                     condition = false;  
             } while (condition);
 
@@ -61,92 +65,103 @@ int main()
             int numberE = white[4] - 1;
             Position start = Position(letterS, numberS);
             Position end = Position(letterE, numberE);
-            if(c.get_piece(end) == new Space())
-                c.shift(start, end);
+            if(gameBoard.get_piece(end) == new Space())
+                gameBoard.shift(start, end);
             else
             {
-                c.eatBlack(*c.get_piece(end));
-                c.shift(start, end);
+                gameBoard.eatBlack(*gameBoard.get_piece(end));
+                gameBoard.shift(start, end);
             }
             
             //se la partita è in parità non continua
-            if(c.checkRules() == 2)
+            if(gameBoard.checkRules(gameBoard) == 2)
             {
                 //scelta mossa computer nero
-                b = black.exe_move(c);
-                Piece* pieceB = c.get_piece(b[0]);
+                b = black.exe_move(gameBoard);
+                Piece* pieceB = gameBoard.get_piece(b[0]);
                 Position moveS = pieceB->get_position();
                 Position moveB = b[1];
-                Piece* pieceW = c.get_piece(moveB);
+                Piece* pieceW = gameBoard.get_piece(moveB);
 
                 //esecuzione mossa computer nero
                 if(pieceB == new Space())
-                    c.shift(moveS, moveB);
+                    gameBoard.shift(moveS, moveB);
                 else
                 {
-                    c.eatWhite(*pieceB);
-                    c.shift(moveS, moveB);
+                    gameBoard.eatWhite(*pieceB);
+                    gameBoard.shift(moveS, moveB);
                 }
-            }        
-        }while(c.checkRules() == 2);
+            }    
+            move++;    
+        }while(gameBoard.checkRules(gameBoard) == 2);
 
-        if(c.checkRules() == -1)
+        if(gameBoard.par(move,gameBoard) == 0 || gameBoard.alreadySeen(moveSequences, gameBoard) == 0)
+            std::cout<<"Partita finita in parità";
+        else if(gameBoard.checkRules(gameBoard) == -1)
             std::cout<<"Vincono i neri, il computer";
-        else if(c.checkRules() == 1)
+        else if(gameBoard.checkRules(gameBoard) == 1)
             std::cout<<"Vincono i bianchi";
         else    
             std::cout<<"Partita finita in parità";    
     }
     else
     {
+        int move = 0;
         Computer white = Computer();
         Computer black = Computer();
         std::vector<Position> w;
         std::vector<Position> b;        
-        for(int moves = 0; moves<40 && c.checkRules() == 2; moves++)
+        for(int moves = 0; moves<40 && gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2; moves++)
         {   //scelta mossa bianco
-            w = white.exe_move(c);
-            Piece* pieceW = c.get_piece(w[0]);
+            w = white.exe_move(gameBoard);
+            Piece* pieceW = gameBoard.get_piece(w[0]);
             Position moveS = pieceW->get_position();
             Position moveW = w[1];
-            Piece* pieceB = c.get_piece(moveW);
+            Piece* pieceB = gameBoard.get_piece(moveW);
             //esecuzione mossa bianco
             if(pieceB == new Space())
-                c.shift(moveS, moveW);
+                gameBoard.shift(moveS, moveW);
             else
             {
-                c.eatBlack(*pieceB);
-                c.shift(moveS, moveW);
+                gameBoard.eatBlack(*pieceB);
+                gameBoard.shift(moveS, moveW);
             }
 
-            if(c.checkRules() != 0 && c.checkRules() !=1)
+            if(gameBoard.checkRules(gameBoard) != 0 && gameBoard.checkRules(gameBoard) !=1 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2)
             {   //scelta mossa nero
-                b = black.exe_move(c);
-                Piece* pieceB = c.get_piece(b[0]);
+                b = black.exe_move(gameBoard);
+                Piece* pieceB = gameBoard.get_piece(b[0]);
                 Position moveS = pieceB->get_position();
                 Position moveB = b[1];
-                Piece* pieceW = c.get_piece(moveB);
+                Piece* pieceW = gameBoard.get_piece(moveB);
                 //esecuzione mossa nero
                 if(pieceW == new Space())
-                    c.shift(moveS, moveB);
+                    gameBoard.shift(moveS, moveB);
                 else
                 {
-                    c.eatWhite(*pieceW);
-                    c.shift(moveS, moveB);
+                    gameBoard.eatWhite(*pieceW);
+                    gameBoard.shift(moveS, moveB);
                 }
             }
-            else if(c.checkRules() == -1)
+            else if(gameBoard.checkRules(gameBoard) == -1)
                 std::cout<<"Vincono i neri, il computer";
-            else if(c.checkRules() == 1)
+            else if(gameBoard.checkRules(gameBoard) == 1)
                 std::cout<<"Vincono i bianchi";
+            else
+                std::cout<<"Partita finita in parità";
+
+            if(gameBoard.par(move, gameBoard) == 0 || gameBoard.alreadySeen(moveSequences, gameBoard) == 0)
+                std::cout<<"Partita finita in parità";
+            else if(gameBoard.checkRules(gameBoard) == -1)
+                std::cout<<"vincono i neri";
+            else if(gameBoard.checkRules(gameBoard) == 1)
+                std::cout<<"vincono i bianchi";
             else
                 std::cout<<"Partita finita in parità";
         }
     }
 
     std::cout << "\n\t-><- Il programma compila senza errori, uWu -><-\n";
-    char ch{};
-    std::cin >> ch;
     return 0;
 }
 

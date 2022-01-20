@@ -20,6 +20,14 @@ public:
 	//costruttore
 	Chessboard();
 
+	//operandi di stampa
+	Chessboard& operator<<(const Chessboard& gameBoard);
+	bool operator==(Chessboard & first);
+
+	//costruttore e assegnamento di spostamnto
+	Chessboard(const Chessboard& gameBoard);
+	Chessboard& operator=(const Chessboard& gameBoard);
+
 	//distruttore
 	~Chessboard();//finire
 
@@ -29,7 +37,10 @@ public:
 	Piece* get_piece(const Position& pos);
 	std::vector<Piece*> get_liveWhite();
 	std::vector<Piece*> get_liveBlack();
-	int checkRules();//finire  
+	bool canMove(bool colour, Chessboard gameBoard);
+	int checkRules(Chessboard gameBoard);
+	int alreadySeen(std::vector<Chessboard> moveSequences, Chessboard gameBoard);
+	int par(int move, Chessboard gameBoard); 
 
 	//funzione che restituisce true se la posizione si trova all'interno della scacchiera, false altrimenti
 	bool is_valid_position(Position& pos);
