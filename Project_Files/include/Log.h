@@ -29,6 +29,10 @@
     read_xy(std::string s) :
             funzione che restituisce una mossa a chiamata in ordine cronologico d'inserimento.
 
+    file_eof(std::string t) :
+            funzione che restituisce true quando sono finiti gli elementi da acquisire del file
+
+
 
 */
 #ifndef LOG_H
@@ -42,10 +46,12 @@ class Log
 {
     public:
         Log();
-        Log(std::string title);
-        void write_xy(std::string s, Position a, Position b);
+        Log(std::string t);
+        void write_xy(std::string t, Chessboard& cb, Position a, Position b);
         std::vector<Position> read_xy(std::string s); //per ora è void, alla fine sarà un vettore di posizioni
-    
+        int move_type(Chessboard& cb, Position a, Position b);
+        bool file_eof(std::string t);
+
     private:
         std::fstream file;
         std::string title;
