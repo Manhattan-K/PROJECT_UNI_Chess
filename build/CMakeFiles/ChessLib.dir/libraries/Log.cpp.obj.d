@@ -141,4 +141,6 @@ CMakeFiles/ChessLib.dir/libraries/Log.cpp.obj: \
  C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/vector.tcc \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
- D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Space.h \
+ D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h

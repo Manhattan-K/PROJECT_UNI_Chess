@@ -14,7 +14,6 @@ Log::Log(std::string s)
     title = s;
     file.open(title);
 }
-
 //--------------------------------------------------------| Funzioni |--------------------------------------------------------
 /*
     ( Commento per lo sviluppatore che sarà tolto in futuro C: )
@@ -26,7 +25,7 @@ Log::Log(std::string s)
 
 //Funzione che da Schacchiera, salva le mosse su un file.txt
 //(Filippo, dovrai creare un oggetto Log, e scrivere questa funzione dopo ogni shift :D)
-void Log::write_file(Log mt, Chessboard& cb, Position a, Position b)
+void Log::write_file(Chessboard& cb, Position a, Position b)
 {   
     Chessboard board = cb;
     int letter_a = a.get_letter() + 97;
@@ -37,9 +36,9 @@ void Log::write_file(Log mt, Chessboard& cb, Position a, Position b)
     int number_b = b.get_number() + 1;
     std::string pos_fin = "" + letter_b + number_a;
 
-    int type = mt.w_move_type(board, a, b);
+    int type = w_move_type(board, a, b);
 
-    file.open(mt.title, std::ios::out | std::ios::app); //write in modalità append
+    file.open(title, std::ios::out | std::ios::app); //write in modalità append
     /*
         _> ios::out, indica che s.txt verrà aperto in modalità scrittura.
         _> ios::app, indica che ciò che viene scritto verrà aggiunto in seguito all'ultima modifica eseguita in s.txt.
@@ -72,7 +71,6 @@ std::vector<int> Log::read_file(std::string t)
     Position temp;
     std::string pos_str;
     std::vector<int> move;
-    std::vector<int> hollow; //vettore vuoto restituito in caso di "errori"
 
     file.open(title, std::ios::in); //read
     if (!file.eof() && file.is_open())  //file.eof() restituisce true, se nel file sono finiti i dati da leggere.
@@ -98,7 +96,8 @@ std::vector<int> Log::read_file(std::string t)
 
         type = pos_str[4];
         
-        return  move;
+        file.close();
+        return move;
         /*
             move contiene ora una serie di numeri : 
             move[0]: il numero corrispondente alla x della pos_in
@@ -108,7 +107,9 @@ std::vector<int> Log::read_file(std::string t)
             move[4]: il numero corrispondente al move_type
         */
     }
+        //vettore vuoto restituito in caso di "errori"
     file.close();
+    return move;
 }
 
 std::vector<Position> Log::get_xy(std::vector<int> move)

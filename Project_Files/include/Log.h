@@ -71,8 +71,10 @@ class Log
         std::vector<int> read_file(std::string t); 
         std::vector<Position> get_xy(std::vector<int> move);
         int w_move_type(Chessboard& cb, Position a, Position b);
-        void write_file(Log mt, Chessboard& cb, Position a, Position b); 
+        void write_file(Chessboard& cb, Position a, Position b); 
         void spec_type_move(Chessboard& cb, std::vector<int> move);
+
+        ~Log() {   file.close();   }
        
     private:
         std::fstream file;

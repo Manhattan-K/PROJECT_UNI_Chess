@@ -91,7 +91,13 @@ Chessboard::Chessboard()
 	}
 }
 
-Chessboard& Chessboard::operator<<(const Chessboard& gameBoard)
+/*
+	Togli operato<<
+	Metti una funzione:
+		string get_line();
+	Utilizzi lo stesso algoritmo
+*/
+std::ostream& Chessboard::operator<<(std::ostream& os)
 {
 	char temp[8][8];
 	for(int c = 0; c < 8; c++)
@@ -127,7 +133,9 @@ Chessboard& Chessboard::operator<<(const Chessboard& gameBoard)
 		}
 	for(int r = 0; r < 8; r++)
 		for(int c = 0; c < 8; c++)
-			std::cout<<temp[r][c];
+			os << temp[r][c];
+	
+	return os;
 }
 
 bool Chessboard::operator==(Chessboard& first)
