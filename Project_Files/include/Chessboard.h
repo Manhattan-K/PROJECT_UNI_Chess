@@ -21,7 +21,7 @@ public:
 	Chessboard();
 
 	//operandi di stampa
-	Chessboard& operator<<(const Chessboard& gameBoard);
+	std::ostream& operator<<(std::ostream& os);
 	bool operator==(Chessboard & first);
 
 	//costruttore e assegnamento di spostamnto
