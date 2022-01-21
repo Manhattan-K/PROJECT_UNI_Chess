@@ -46,12 +46,14 @@ class Log
 {
     public:
         Log();
+        ~Log();
         Log(std::string t);
-        void write_xy(std::string t, Chessboard& cb, Position a, Position b);
-        std::vector<Position> read_xy(std::string s); //per ora è void, alla fine sarà un vettore di posizioni
-        int move_type(Chessboard& cb, Position a, Position b);
         bool file_eof(std::string t);
-
+        std::vector<int> read_file(std::string t); 
+        std::vector<Position> get_xy(std::string t);
+        int w_move_type(Chessboard& cb, Position a, Position b);
+        void write_file(std::string t, Chessboard& cb, Position a, Position b); 
+       
     private:
         std::fstream file;
         std::string title;
