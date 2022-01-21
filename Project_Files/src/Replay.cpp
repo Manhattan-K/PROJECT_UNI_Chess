@@ -27,7 +27,7 @@ int main()
         std::cin >> file_title;
         do
         {
-            move = file_log.read_xy(file_title); //read_xy() restituisce una coppia di coordinate (di una mossa) a chiamata
+            move = file_log.get_xy(file_title); //get_xy() restituisce una coppia di coordinate (di una mossa) a chiamata
             Position pos_in = move[0];
             Position pos_fin = move[1];
             board.shift(pos_in, pos_fin);  //esegue la mossa descritta dalle coordinate ricevute a parametro
