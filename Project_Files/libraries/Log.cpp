@@ -317,4 +317,5 @@ std::string Log::spec_type_move(Chessboard& cb, std::vector<int> move)
         std::cout << "La pedina " + type_p2 + " ( " + team_p2 + " ) in posizione " + pos_fin + " viene mangiata da " + type_p1 + " ( " + team_p1 + " )\n";
     }
     */
+    return text;
 }

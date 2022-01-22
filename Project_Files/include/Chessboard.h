@@ -40,7 +40,8 @@ public:
 	bool canMove(bool colour, Chessboard gameBoard);
 	int checkRules(Chessboard gameBoard);
 	int alreadySeen(std::vector<Chessboard> moveSequences, Chessboard gameBoard);
-	int par(int move, Chessboard gameBoard); 
+	int par(int move, Chessboard gameBoard);
+	std::string to_string();
 
 	//funzione che restituisce true se la posizione si trova all'interno della scacchiera, false altrimenti
 	bool is_valid_position(Position& pos);

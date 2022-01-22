@@ -91,51 +91,69 @@ Chessboard::Chessboard()
 	}
 }
 
-/*
-	Togli operato<<
-	Metti una funzione:
-		string get_line();
-	Utilizzi lo stesso algoritmo
-*/
-std::ostream& Chessboard::operator<<(std::ostream& os)
+
+std::string Chessboard::to_string()
 {
-	char temp[8][8];
-	for(int c = 0; c < 8; c++)
-		for(int r = 0 ; r < 8; r++)
-		{
-			Position pos = Position(c, r);
-			if(matrix[r][c] == new Pawn(pos, false))
-				temp[r][c] = 'P';
-			else if(matrix[r][c] == new Pawn(pos, true))
-				temp[r][c] = 'p';
-			else if(matrix[r][c] == new Rook(pos, false))
-				temp[r][c] = 'T';
-			else if(matrix[r][c] == new Rook(pos, true))
-				temp[r][c] = 't';
-			else if(matrix[r][c] == new Horse(pos, false))
-				temp[r][c] = 'C';
-			else if(matrix[r][c] == new Horse(pos, true))
-				temp[r][c] = 'c';
-			else if(matrix[r][c] == new Bishop(pos, false))
-				temp[r][c] = 'A';
-			else if(matrix[r][c] == new Bishop(pos, true))
-				temp[r][c] = 'a';
-			else if(matrix[r][c] == new Queen(pos, false))
-				temp[r][c] = 'D';
-			else if(matrix[r][c] == new Queen(pos, true))
-				temp[r][c] = 'd';
-			else if(matrix[r][c] == new King(pos, false))
-				temp[r][c] = 'R';
-			else if(matrix[r][c] == new King(pos, true))
-				temp[r][c] = 'r';
-			else
-				temp[r][c] = ' ';
-		}
+	std::string line {};
+	char row_c {};
+
 	for(int r = 0; r < 8; r++)
+	{
+		row_c = 8 - r;
+		line += row_c + ' ';
 		for(int c = 0; c < 8; c++)
-			os << temp[r][c];
+		{
+				//Spazio vuoto
+			if(matrix[r][c]->get_type() == 0)
+				line += ' ';
+				//Re
+			else if(matrix[r][c]->get_type() == 1)
+			{
+				if(matrix[r][c]->get_team())
+					line += 'r';
+				else line += 'R';
+			}
+				//Regina
+			else if(matrix[r][c]->get_type() == 2)
+			{
+				if(matrix[r][c]->get_team())
+					line += 'd';
+				else line += 'D';
+			}
+				//Pedone
+			else if(matrix[r][c]->get_type() == 3)
+			{
+				if(matrix[r][c]->get_team())
+					line += 'p';
+				else line += 'P';
+			}
+				//Alfiere
+			else if(matrix[r][c]->get_type() == 4)
+			{
+				if(matrix[r][c]->get_team())
+					line += 'a';
+				else line += 'A';
+			}
+				//Cavallo
+			else if(matrix[r][c]->get_type() == 5)
+			{
+				if(matrix[r][c]->get_team())
+					line += 'c';
+				else line += 'C';
+			}
+				//Torre
+			else if(matrix[r][c]->get_type() == 6)
+			{
+				if(matrix[r][c]->get_team())
+					line += 't';
+				else line += 'T';
+			}	
+		}
+		line += '\n';
+	}
+	line += "\n  ABCDEFGH";
 	
-	return os;
+	return line;
 }
 
 bool Chessboard::operator==(Chessboard& first)
@@ -302,6 +320,7 @@ int Chessboard::checkRules(Chessboard gameBoard)
 				}
 			}
 	}
+	return 2;
 }
 
 //Posizione già vista 2 volte
@@ -347,8 +366,7 @@ int Chessboard::par(int move, Chessboard gameBoard)
 		if(liveB.size() == 16 && count == 0)
 			return 0;
 	}
-	else
-		return 2;
+	return 2;
 }
 
 //restituisce la pedina nella posizione richiesta
