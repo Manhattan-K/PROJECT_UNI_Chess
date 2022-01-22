@@ -67,6 +67,7 @@ class Log
     public:
         Log();
         Log(std::string t);
+        ~Log() {file.close();}
         bool file_eof(std::string t);
         std::vector<int> read_file(std::string t); 
         std::vector<Position> get_xy(std::vector<int> move);

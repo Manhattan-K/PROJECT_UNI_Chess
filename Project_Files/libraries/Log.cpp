@@ -96,7 +96,6 @@ std::vector<int> Log::read_file(std::string t)
         move.push_back(number);
 
         type = pos_str[4];
-        
         return  move;
         /*
             move contiene ora una serie di numeri : 
