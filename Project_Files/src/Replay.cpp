@@ -4,6 +4,8 @@
 #include "Chessboard.h"
 #include "Log.h"
 #include <String>
+#include <chrono>
+#include <thread>
 
 int main()
 {
@@ -59,6 +61,7 @@ int main()
             //std::cout << board;            
             text = file_log.spec_type_move(board, move); // commenta ciascuna mossa
             std::cout << text;
+            std::this_thread::sleep_for(std::chrono::seconds(1)); //"addormenta" (cioè mette in pausa) il codice per un secondo.
         }
         else if(choice == 'f')
         {
