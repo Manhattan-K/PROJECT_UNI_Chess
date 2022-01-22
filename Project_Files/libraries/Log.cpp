@@ -57,7 +57,6 @@ void Log::write_file(Chessboard& cb, Position a, Position b)
         file << pos_in << pos_fin << type + "\n";
         
     }
-    file.close();
 }
 
 
@@ -107,8 +106,6 @@ std::vector<int> Log::read_file(std::string t)
             move[4]: il numero corrispondente al move_type
         */
     }
-        //vettore vuoto restituito in caso di "errori"
-    file.close();
     return move;
 }
 
@@ -170,13 +167,13 @@ int Log::w_move_type(Chessboard& cb, Position a, Position b)
 
 }
 
-void Log::spec_type_move(Chessboard& cb, std::vector<int> move)
+std::string Log::spec_type_move(Chessboard& cb, std::vector<int> move)
 {     
     int type = move[4]; //ottengo il tipo di mossa
     //posizioni per uotput testuale
     std::string pos_in = "" + move[0] + move[1];
     std::string pos_fin = "" + move[2] + move[3];
-
+    std::string text;
     //Info logistiche della pedina in posizione pos_in
     std::vector<Position> v_move = get_xy(move);
     Position v_pos_in = v_move[0];
@@ -268,8 +265,35 @@ void Log::spec_type_move(Chessboard& cb, std::vector<int> move)
         team_p2 = "Black";
     }
 
+    //Commenti delle diverse mosse
+    if(type == 0) //vincono i neri
+    {
+        text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nVince la fazione NERA";
+        return text;
+    }
+    else if(type == 1) //patta
+    {
+        text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nSi termina con una situazione di PATTA";
+        return text;
+    }
+    else if(type == 2) //vincono i bianchi
+    {
+        text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nVince la fazione BIANCA";     
+        return text;
+    } 
+    else if(type == 3) //spostamento senza "mangiata"
+    {
+        text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\n";        
+        return text;
+    }
+    else if(type == 4) //spostamento con "mangiata"
+    {
+        text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nLa pedina " + type_p2 + " ( " + team_p2 + " ) in posizione " + pos_fin + " viene mangiata da " + type_p1 + " ( " + team_p1 + " )\n";  
+        return text;
+    }
 
 
+    /*
     //Commenti delle diverse mosse
     if(type == 0) //vincono i neri
     {
@@ -292,4 +316,5 @@ void Log::spec_type_move(Chessboard& cb, std::vector<int> move)
         std::cout << "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\n";
         std::cout << "La pedina " + type_p2 + " ( " + team_p2 + " ) in posizione " + pos_fin + " viene mangiata da " + type_p1 + " ( " + team_p1 + " )\n";
     }
+    */
 }
