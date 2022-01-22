@@ -269,27 +269,22 @@ std::string Log::spec_type_move(Chessboard& cb, std::vector<int> move)
     if(type == 0) //vincono i neri
     {
         text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nVince la fazione NERA";
-        return text;
     }
     else if(type == 1) //patta
     {
         text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nSi termina con una situazione di PATTA";
-        return text;
     }
     else if(type == 2) //vincono i bianchi
     {
         text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nVince la fazione BIANCA";     
-        return text;
     } 
     else if(type == 3) //spostamento senza "mangiata"
     {
         text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\n";        
-        return text;
     }
     else if(type == 4) //spostamento con "mangiata"
     {
         text = "\nLa pedina " + type_p1 + " ( " + team_p1 + " ) in posizione " + pos_in + " si muove alla posizione " + pos_fin +".\nLa pedina " + type_p2 + " ( " + team_p2 + " ) in posizione " + pos_fin + " viene mangiata da " + type_p1 + " ( " + team_p1 + " )\n";  
-        return text;
     }
 
 
