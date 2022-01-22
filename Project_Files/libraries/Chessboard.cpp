@@ -320,6 +320,70 @@ int Chessboard::checkRules(Chessboard gameBoard)
 				}
 			}
 	}
+	//vince nero
+	std::vector<std::vector<Position>> tempB;
+	std::vector<Position> eatB;
+	for(int c = 0; c < 8; c++)
+	{	for(int r = 0; r < 8; r++)
+		{
+			Position k = Position(c, r);
+			if(matrix[r][c]->get_type() == 1)
+				if(matrix[r][c]->get_team() == true)
+				{
+					tempB = matrix[r][c]->get_moves(gameBoard);
+					if(tempB[0].size() == 0 && tempB[1].size() == 0)
+					{
+						for(int c = 0; c < 8; c++)
+							for(int r = 0; r < 8; r++)
+							{
+								if(matrix[r][c]->get_team() == false)
+								{
+									tempB = matrix[r][c]->get_moves(gameBoard);
+									std::vector<Position> tB = tempB[0];
+									if(tempB[0].size() != 0)
+										for(int i = 0; i < tB.size(); i++)
+											eatB.push_back(tB[i]);
+								}
+								if(eatB.size() != 0)
+									return -1;
+							}
+					}
+				}
+		} 
+	}	
+
+	//vince bianco
+	std::vector<std::vector<Position>> tempW;
+	std::vector<Position> eatW;
+	for(int c = 0; c < 8; c++)
+	{	for(int r = 0; r < 8; r++)
+		{
+			Position k = Position(c, r);
+			if(matrix[r][c]->get_type() == 1)
+				if(matrix[r][c]->get_team() == false)
+				{
+					tempW = matrix[r][c]->get_moves(gameBoard);
+					if(tempW[0].size() == 0 && tempW[1].size() == 0)
+					{
+						for(int c = 0; c < 8; c++)
+							for(int r = 0; r < 8; r++)
+							{
+								if(matrix[r][c]->get_team() == true)
+								{
+									tempW = matrix[r][c]->get_moves(gameBoard);
+									std::vector<Position> tW = tempW[0];
+									if(tW.size() != 0)
+										for(int i = 0; i < tW.size(); i++)
+											eatW.push_back(tW[i]);
+								}
+								if(eatW.size() != 0)
+									return 1;
+							}
+					}
+				}
+		} 
+	}
+
 	return 2;
 }
 
