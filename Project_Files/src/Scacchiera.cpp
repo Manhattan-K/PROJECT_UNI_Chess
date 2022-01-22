@@ -15,7 +15,16 @@
 #include "Rook.h"
 
 #include <iostream>
-
+void print(Chessboard gameBoard, Position start, std::string input)
+{
+    int type = gameBoard.get_piece(start)->get_type();
+    if(type == 1) std::cout<<"Re mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+    if(type == 2) std::cout<<"Regina mossa da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+    if(type == 3) std::cout<<"Pedone mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+    if(type == 4) std::cout<<"Alfiere mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+    if(type == 5) std::cout<<"Cavallo mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+    if(type == 6) std::cout<<"Torre mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
+}
 int main()
 {
     srand(time(NULL));
@@ -25,6 +34,8 @@ int main()
     Computer white {};
     std::vector<Position> b;
     std::vector<Position> w;
+    std::string blackInput;
+    std::string whiteInput;
     Log file {};
     char role;
     do
@@ -41,10 +52,9 @@ int main()
         {
            if(squad == 0)
            {
-               std::string whiteInput;
                bool condition = true;
                //scelta mossa utente bianco
-               do
+               while(condition)
                {
                    std::cout<<"Mossa bianco: ";
                    std::cin>>whiteInput;   //es: "A3 B4"
@@ -53,16 +63,25 @@ int main()
                    int letterE = whiteInput[3] - 97; // B
                    int numberE = whiteInput[4] - 1;  // 4
                    if((numberE < 0 || numberE > 7) || (numberS < 0 || numberS > 7))
-                        condition = false;
-                  else if((letterE < 0 || letterE > 7) || (letterS < 0 || letterS > 7))
-                        condition = false;    
-                  else
                         condition = true;
+                  else if((letterE < 0 || letterE > 7) || (letterS < 0 || letterS > 7))
+                        condition = true;    
+                  else
+                        condition = false;
                   Position start = Position(letterS, numberS);
-                  if(gameBoard.get_piece(start) == new Space()) 
+                  if(gameBoard.get_piece(start)->get_type() == 0) 
+                        condition = true;
+                  std::vector<std::vector<Position>> moves = gameBoard.get_piece(start)->get_moves(gameBoard);
+                  if(moves[0].size() == 0 && moves[1].size() == 1)
                         condition = true;  
-                } while(condition == false);
-
+                  if(whiteInput[0] == 'X' && whiteInput[1] == 'X' && whiteInput[2] == ' ' && whiteInput[3] == 'X' && whiteInput[4] == 'X')  
+                  {
+                        std::cout<<gameBoard.to_string();
+                  }  
+                  if(condition == true)
+                        std::cout<<"Errore nell'inserimento della posizione";
+                }
+                
                 //esecuzione mossa utente bianco
                 int letterS = whiteInput[0] - 97;
                 int numberS = whiteInput[1] - 1;
@@ -79,7 +98,9 @@ int main()
                 }
                 moveSequences.push_back(gameBoard);
                 file.write_file(gameBoard, start, end);
-            
+
+                print(gameBoard, start, whiteInput);
+
                 //se la partita è in parità non continua
                 if(gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2)
                 {
@@ -100,6 +121,8 @@ int main()
                     }
                     moveSequences.push_back(gameBoard);
                     file.write_file(gameBoard, moveS, moveB);
+                    blackInput += (char)(moveS.get_letter()+97) + (int)(moveS.get_number()+1) + " " + (char)(moveB.get_letter()+97) + (int)(moveB.get_number()+1);
+                    print(gameBoard, moveS, blackInput);
                 }    
             }
             else
@@ -121,13 +144,14 @@ int main()
                 }        
                 moveSequences.push_back(gameBoard);
                 file.write_file(gameBoard, moveS, moveW);
+                whiteInput += (char)(moveS.get_letter()+97) + (int)(moveS.get_number()+1) + " " + (char)(moveW.get_letter()+97) + (int)(moveW.get_number()+1);
+                print(gameBoard, moveS, whiteInput);
 
                 if(gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2)
                 {
-                    std::string blackInput;
                     bool condition = true;
                     //scelta mossa utente nero
-                    do
+                    while(condition)
                     {
                        std::cout<<"Mossa nero: ";
                        std::cin>>blackInput;   //es: "A3 B4"
@@ -143,10 +167,16 @@ int main()
                             condition = true;
                        Position start = Position(letterS, numberS);
                        if(gameBoard.get_piece(start) == new Space()) 
-                            condition = true;  
-                    } while(condition == false);
+                            condition = true;
+                       if(whiteInput[0] == 'X' && whiteInput[1] == 'X' && whiteInput[2] == ' ' && whiteInput[3] == 'X' && whiteInput[4] == 'X')  
+                        {
+                            std::cout<<gameBoard.to_string();
+                        }  
+                        if(condition == true)
+                            std::cout<<"Errore nell'inserimento della posizione";
+                    }
 
-                    //esecuzione mossa utente bianco
+                    //esecuzione mossa utente nero
                     int letterS = blackInput[0] - 97;
                     int numberS = blackInput[1] - 1;
                     int letterE = blackInput[3] - 97;
@@ -162,6 +192,8 @@ int main()
                     }
                     moveSequences.push_back(gameBoard);
                     file.write_file(gameBoard, start, end);
+
+                    print(gameBoard, start, blackInput);
                 } 
 
             }
@@ -211,6 +243,8 @@ int main()
                 gameBoard.eatBlack(*pieceB);
                 gameBoard.shift(moveS, moveW);
             }
+            whiteInput += (char)(moveS.get_letter()+97) + (int)(moveS.get_number()+1) + " " + (char)(moveW.get_letter()+97) + (int)(moveW.get_number()+1);
+            print(gameBoard, moveS, whiteInput);
 
             if(gameBoard.checkRules(gameBoard) != 0 && gameBoard.checkRules(gameBoard) !=1 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2)
             {   //scelta mossa nero
@@ -227,6 +261,8 @@ int main()
                     gameBoard.eatWhite(*pieceW);
                     gameBoard.shift(moveS, moveB);
                 }
+                blackInput += (char)(moveS.get_letter()+97) + (int)(moveS.get_number()+1) + " " + (char)(moveB.get_letter()+97) + (int)(moveB.get_number()+1);
+                print(gameBoard, moveS, blackInput);
             }
             else if(gameBoard.checkRules(gameBoard) == -1)
             {
