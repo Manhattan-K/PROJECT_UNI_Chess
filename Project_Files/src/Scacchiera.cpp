@@ -18,8 +18,10 @@
 
 int main()
 {
+    srand(time(NULL));
     Chessboard gameBoard{};
     std::vector<Chessboard> moveSequences;
+    Log file {};
     char role;
     do
     {
@@ -31,7 +33,10 @@ int main()
     {
         int move = 0;
         Computer black = Computer();
+        Computer white = Computer();
         std::vector<Position> b;
+        std::vector<Position> w;
+        int squad = rand()%2 // se 0 persona bianca altrimenti nera
         do
         {
             moveSequences.push_back(gameBoard);
@@ -92,6 +97,7 @@ int main()
                     gameBoard.shift(moveS, moveB);
                 }
             }    
+            
             move++;    
         }while(gameBoard.checkRules(gameBoard) == 2);
 
