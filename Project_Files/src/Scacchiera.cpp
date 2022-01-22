@@ -39,6 +39,8 @@ int main()
         int squad = rand()%2 // se 0 persona bianca altrimenti nera
         do
         {
+            if(squad == 1)
+                return 0;
             moveSequences.push_back(gameBoard);
 
            std::string white;
