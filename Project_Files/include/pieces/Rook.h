@@ -60,7 +60,7 @@ class Rook : public Piece
 
 		//=---------------------------------------------=Funzioni di Rook=---------------------------------------------=
 			//Overload di get_moves()
-		std::vector<std::vector<Position>> get_moves(const Chessboard& board);
+		std::vector<std::vector<Position>> get_moves(Chessboard& board);
 		
 			//Funzione get della variabile moved
 		bool has_moved() { return moved; }

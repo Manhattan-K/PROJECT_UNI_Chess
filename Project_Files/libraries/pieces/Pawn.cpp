@@ -58,11 +58,11 @@ Pawn& Pawn::operator=(Pawn&& arg)
 
 //=---------------------------------------------=Funzioni di Pawn=---------------------------------------------=
 	//Overload di get_moves()
-std::vector<std::vector<Position>> Pawn::get_moves(const Chessboard& board)
+std::vector<std::vector<Position>> Pawn::get_moves(Chessboard& board)
 {
 	//Creazione oggetti
 	Chessboard cb = board;
-	std::vector<std::vector<Position>> moves{};
+	std::vector<std::vector<Position>> moves{ {}, {}};
 
 	//Chiamata alle varie funzioni
 	ahead(cb, moves);
@@ -75,7 +75,7 @@ std::vector<std::vector<Position>> Pawn::get_moves(const Chessboard& board)
 void Pawn::check_piece(Piece* target, Position& target_pos, std::vector<std::vector<Position>>& moves)
 {
 	//Se nella posizione c'� una pedina del team nemico, inserisci la posizione nel secondo vettore
-	if (target->get_team() != team)
+	if(target->get_team() != team && target->get_type() != 0)
 		moves[1].push_back(target_pos);
 }
 

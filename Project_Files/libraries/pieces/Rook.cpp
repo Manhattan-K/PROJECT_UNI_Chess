@@ -59,11 +59,11 @@ Rook& Rook::operator=(Rook&& arg)
 
 //=---------------------------------------------=Funzioni di Rook=---------------------------------------------=
 	//Overload di get_moves()
-std::vector<std::vector<Position>> Rook::get_moves(const Chessboard& board)
+std::vector<std::vector<Position>> Rook::get_moves(Chessboard& board)
 {
 	//Creazione oggetti
 	Chessboard cb = board;
-	std::vector<std::vector<Position>> moves{};
+	std::vector<std::vector<Position>> moves{ {}, {}};
 
 	//Chiamata alle varie funzioni
 	up(cb, moves);
@@ -96,11 +96,11 @@ void Rook::up(Chessboard& board, std::vector<std::vector<Position>>& moves)
 	bool done{ false };
 	Position target_pos{};
 	Piece* target{};
+	int y{ 1 };
 
 	do
 	{
 		//Controgliamo ad ogni ciclo una posizione pi� a nord del ciclo precedente
-		int y{ 1 };
 		target_pos.set_position(pos.get_letter(), pos.get_number() - y);
 
 		//Primo controllo se la posizione � valida
@@ -112,6 +112,8 @@ void Rook::up(Chessboard& board, std::vector<std::vector<Position>>& moves)
 			{
 				Piece* target = board.get_piece(target_pos);
 				check_piece(target, target_pos, moves);
+				if(target->get_team() != team && target->get_type() != 0)
+					done = true;
 			}
 			else done = true;
 			y++;
@@ -126,11 +128,11 @@ void Rook::right(Chessboard& board, std::vector<std::vector<Position>>& moves)
 	bool done{ false };
 	Position target_pos{};
 	Piece* target{};
+	int x{ 1 };
 
 	do
 	{
 		//Controgliamo ad ogni ciclo una posizione pi� a nord del ciclo precedente
-		int x{ 1 };
 		target_pos.set_position(pos.get_letter() + x, pos.get_number());
 
 		//Primo controllo se la posizione � valida
@@ -142,6 +144,8 @@ void Rook::right(Chessboard& board, std::vector<std::vector<Position>>& moves)
 			{
 				Piece* target = board.get_piece(target_pos);
 				check_piece(target, target_pos, moves);
+				if(target->get_team() != team && target->get_type() != 0)
+					done = true;
 			}
 			else done = true;
 			x++;
@@ -156,11 +160,11 @@ void Rook::down(Chessboard& board, std::vector<std::vector<Position>>& moves)
 	bool done{ false };
 	Position target_pos{};
 	Piece* target{};
+	int y{ 1 };
 
 	do
 	{
 		//Controgliamo ad ogni ciclo una posizione pi� a nord del ciclo precedente
-		int y{ 1 };
 		target_pos.set_position(pos.get_letter(), pos.get_number() + y);
 
 		//Primo controllo se la posizione � valida
@@ -172,6 +176,8 @@ void Rook::down(Chessboard& board, std::vector<std::vector<Position>>& moves)
 			{
 				Piece* target = board.get_piece(target_pos);
 				check_piece(target, target_pos, moves);
+				if(target->get_team() != team && target->get_type() != 0)
+					done = true;
 			}
 			else done = true;
 			y++;
@@ -186,11 +192,11 @@ void Rook::left(Chessboard& board, std::vector<std::vector<Position>>& moves)
 	bool done{ false };
 	Position target_pos{};
 	Piece* target{};
-
+	int x{ 1 };
+	
 	do
 	{
 		//Controgliamo ad ogni ciclo una posizione pi� a nord del ciclo precedente
-		int x{ 1 };
 		target_pos.set_position(pos.get_letter() - x, pos.get_number());
 
 		//Primo controllo se la posizione � valida
@@ -202,6 +208,8 @@ void Rook::left(Chessboard& board, std::vector<std::vector<Position>>& moves)
 			{
 				Piece* target = board.get_piece(target_pos);
 				check_piece(target, target_pos, moves);
+				if(target->get_team() != team && target->get_type() != 0)
+					done = true;
 			}
 			else done = true;
 			x++;

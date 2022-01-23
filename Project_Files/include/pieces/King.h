@@ -34,7 +34,7 @@ class King : public Piece
 
 		//=---------------------------------------------=Funzioni di King=---------------------------------------------=
 			//Overload di get_moves()
-		std::vector<std::vector<Position>> get_moves(const Chessboard& board);
+		std::vector<std::vector<Position>> get_moves(Chessboard& board);
 
 	private:
 			//Overload di circle()

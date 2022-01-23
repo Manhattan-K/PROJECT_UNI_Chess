@@ -38,7 +38,7 @@ void Log::write_file(Chessboard& cb, Position a, Position b)
 
     int type = w_move_type(board, a, b);
 
-    file.open(title, std::ios::out | std::ios::app); //write in modalità append
+    file.open("log.txt", std::ios::out | std::ios::app); //write in modalità append
     /*
         _> ios::out, indica che s.txt verrà aperto in modalità scrittura.
         _> ios::app, indica che ciò che viene scritto verrà aggiunto in seguito all'ultima modifica eseguita in s.txt.

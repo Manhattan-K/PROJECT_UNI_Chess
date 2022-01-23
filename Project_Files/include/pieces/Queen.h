@@ -34,7 +34,7 @@ class Queen : public Piece
 
 		//=---------------------------------------------=Funzioni di Queen=---------------------------------------------=
 			//Overload di get_moves()
-		std::vector<std::vector<Position>> get_moves(const Chessboard& board);
+		std::vector<std::vector<Position>> get_moves(Chessboard& board);
 
 	private:
 			//Overload delle funzioni di movimento necessarie

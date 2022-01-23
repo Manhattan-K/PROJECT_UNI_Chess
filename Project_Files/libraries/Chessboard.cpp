@@ -41,7 +41,7 @@ Chessboard::Chessboard()
 {
 	
 	//setto gli spazi con Space() 
-	for (int r = 2; r < 5; r++)
+	for (int r = 2; r < 6; r++)
 		for (int c = 0; c < 8; c++)
 		{
 			Position box = Position(c, r);
@@ -68,8 +68,8 @@ Chessboard::Chessboard()
 		}
 		if (c == 2 || c == 5)
 		{
-			matrix[c][0] = new Bishop(b, false);
-			matrix[c][7] = new Bishop(w, true);
+			matrix[0][c] = new Bishop(b, false);
+			matrix[7][c] = new Bishop(w, true);
 		}
 		if (c == 3)
 		{
@@ -99,8 +99,7 @@ std::string Chessboard::to_string()
 
 	for(int r = 0; r < 8; r++)
 	{
-		row_c = 8 - r;
-		line += row_c + ' ';
+		line += std::to_string(8 - r) + " ";
 		for(int c = 0; c < 8; c++)
 		{
 				//Spazio vuoto
@@ -152,7 +151,6 @@ std::string Chessboard::to_string()
 		line += '\n';
 	}
 	line += "\n  ABCDEFGH";
-	
 	return line;
 }
 
@@ -165,11 +163,12 @@ bool Chessboard::operator==(Chessboard& first)
 	return true;
 }
 
+//=-----------------------------------------------------------------------------------------=
+
 Chessboard::Chessboard(const Chessboard& gameBoard)
 {
 	liveWhite = gameBoard.liveWhite;
 	liveBlack = gameBoard.liveBlack;
-	Piece* matrix[8][8];
 	for(int r = 0; r < 8; r++)
 		for(int c = 0; c < 8; c++)
 			matrix[r][c] = gameBoard.matrix[r][c];
@@ -177,29 +176,83 @@ Chessboard::Chessboard(const Chessboard& gameBoard)
 
 Chessboard& Chessboard::operator=(const Chessboard& gameBoard)
 {
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+		{
+			delete matrix[r][c];
+			matrix[r][c] = NULL;
+		}
+	
 	liveWhite = gameBoard.liveWhite;
 	liveBlack = gameBoard.liveBlack;
-	Piece* matrix[8][8];
 	for(int r = 0; r < 8; r++)
 		for(int c = 0; c < 8; c++)
 			matrix[r][c] = gameBoard.matrix[r][c];
 	return *this;
 }
 
+//costruttore e assegnamento di movimento
+Chessboard::Chessboard(Chessboard&& gameBoard)
+{
+	liveWhite = gameBoard.liveWhite;
+	liveBlack = gameBoard.liveBlack;
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			matrix[r][c] = gameBoard.matrix[r][c];
+
+	gameBoard.liveWhite = std::vector<Piece*> {};
+	gameBoard.liveBlack = std::vector<Piece*> {};
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+		{
+			delete gameBoard.matrix[r][c];
+			gameBoard.matrix[r][c] = NULL;
+		}
+}
+Chessboard& Chessboard::operator=(Chessboard&& gameBoard)
+{
+	liveWhite = gameBoard.liveWhite;
+	liveBlack = gameBoard.liveBlack;
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+			matrix[r][c] = gameBoard.matrix[r][c];
+
+	gameBoard.liveWhite = std::vector<Piece*> {};
+	gameBoard.liveBlack = std::vector<Piece*> {};
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+		{
+			delete gameBoard.matrix[r][c];
+			gameBoard.matrix[r][c] = NULL;
+		}
+	
+	return *this;
+}
+
+//=-----------------------------------------------------------------------------------------=
+
 //distruttore
-Chessboard::~Chessboard() {}
+Chessboard::~Chessboard()
+{
+	for(int r = 0; r < 8; r++)
+		for(int c = 0; c < 8; c++)
+		{
+			delete matrix[r][c];
+			matrix[r][c] = NULL;
+		}
+}
 
 //spostamento di una pedina
 void Chessboard::shift(Position start, Position end)
 {
-	int x = start.get_letter();
-	int y = start.get_number();
+	int y = start.get_letter();
+	int x = start.get_number();
 	Piece* box = matrix[x][y];
-	matrix[x][y] = 0;
-	x = end.get_letter();
-	y = end.get_number();
+	box->set_piece_position(end);
+	matrix[x][y] = new Space{start};
+	y = end.get_letter();
+	x = end.get_number();
 	matrix[x][y] = box;
-
 }
 
 //elimina una pedina dalla lista delle pedine vive sia per bianche che per nere
@@ -257,7 +310,7 @@ void Chessboard::eatBlack(Piece& x)
 std::vector<Piece*> Chessboard::get_liveWhite()
 { return liveWhite; }
 
-std:: vector<Piece*>Chessboard::get_liveBlack()
+std::vector<Piece*> Chessboard::get_liveBlack()
 { return liveBlack; }
 
 bool Chessboard::canMove(bool colour, Chessboard gameBoard)
@@ -437,8 +490,8 @@ int Chessboard::par(int move, Chessboard gameBoard)
 Piece* Chessboard::get_piece(const Position& pos)
 {
 	Position box = pos;
-	int x = box.get_letter();
-	int y = box.get_number();
+	int y = box.get_letter();
+	int x = box.get_number();
 	return matrix[x][y];
 }
 
