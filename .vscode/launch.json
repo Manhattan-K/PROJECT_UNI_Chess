@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "immettere il nome del programma, ad esempio ${workspaceFolder}/a.exe",
+            "program": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/scacchiera.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

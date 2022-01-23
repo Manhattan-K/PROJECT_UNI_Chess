@@ -51,7 +51,7 @@ Space& Space::operator=(Space&& arg)
 
 //= -------------------------------------------- -= Funzioni di Space = -------------------------------------------- -=
 	//Overload di get_moves()
-std::vector<std::vector<Position>> Space::get_moves(const Chessboard & board)
+std::vector<std::vector<Position>> Space::get_moves(Chessboard & board)
 {
-	return std::vector<std::vector<Position>> {};
+	return std::vector<std::vector<Position>> {{}, {}};
 }

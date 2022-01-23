@@ -51,11 +51,11 @@ King& King::operator=(King&& arg)
 
 //=---------------------------------------------=Funzioni di King=---------------------------------------------=
 	//Overload di get_moves()
-std::vector<std::vector<Position>> King::get_moves(const Chessboard& board)
+std::vector<std::vector<Position>> King::get_moves(Chessboard& board)
 {
 	//Creazione oggetti
 	Chessboard cb = board;
-	std::vector<std::vector<Position>> moves{};
+	std::vector<std::vector<Position>> moves{ {}, {}};
 	
 	//Chiamata alle varie funzioni
 	circle(cb, moves);

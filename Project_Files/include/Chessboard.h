@@ -7,14 +7,14 @@
 #include <vector>
 
 #include "Position.h"
-#include "pieces/Piece.h"
+#include "Piece.h"
 
 class Chessboard
 {
 private:
-	Piece* matrix[8][8] {0};
-	std::vector<Piece*> liveWhite = {};
-	std::vector<Piece*> liveBlack = {};
+	Piece* matrix[8][8] {};
+	std::vector<Piece*> liveWhite {};
+	std::vector<Piece*> liveBlack {};
 
 public:
 	//costruttore
@@ -24,9 +24,13 @@ public:
 	std::ostream& operator<<(std::ostream& os);
 	bool operator==(Chessboard & first);
 
-	//costruttore e assegnamento di spostamnto
+	//costruttore e assegnamento di copia
 	Chessboard(const Chessboard& gameBoard);
 	Chessboard& operator=(const Chessboard& gameBoard);
+
+	//costruttore e assegnamento di movimento
+	Chessboard(Chessboard&& gameBoard);
+	Chessboard& operator=(Chessboard&& gameBoard);
 
 	//distruttore
 	~Chessboard();//finire

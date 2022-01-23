@@ -51,11 +51,11 @@ Horse& Horse::operator=(Horse&& arg)
 
 //=---------------------------------------------=Funzioni di Horse=---------------------------------------------=
 	//Overload di get_moves()
-std::vector<std::vector<Position>> Horse::get_moves(const Chessboard& board)
+std::vector<std::vector<Position>> Horse::get_moves(Chessboard& board)
 {
 	//Creazione oggetti
 	Chessboard cb = board;
-	std::vector<std::vector<Position>> moves{};
+	std::vector<std::vector<Position>> moves{ {}, {}};
 
 	//Chiamata alle varie funzioni
 	jump(cb, moves);

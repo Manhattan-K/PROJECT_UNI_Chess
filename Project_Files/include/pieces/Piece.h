@@ -116,7 +116,7 @@ class Piece
 
 		//=---------------------------------------------=Funzioni di Piece:public=---------------------------------------------=
 			//Funzioni per il movimento {Descrizione funzioni all'allinizio del file}
-		virtual std::vector<std::vector<Position>> get_moves(const Chessboard& board) = 0;
+		virtual std::vector<std::vector<Position>> get_moves(Chessboard& board) = 0;
 
 			//Funzione che rende la pedina ingiocabile
 		void die() { pos.set_position(8, 8); alive = false; type = 0; }

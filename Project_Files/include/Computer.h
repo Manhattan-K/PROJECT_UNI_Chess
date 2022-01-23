@@ -40,7 +40,7 @@ class Computer
 		// | Costruttore di Default e Team |
 		Computer();
 		//Computer(bool flag);
-		Computer(bool flag, const Chessboard& cb);
+		Computer(bool flag);
 
 		// | Costruttore e assegnamento di Copia |
 		Computer(const Computer& pc);
@@ -54,15 +54,13 @@ class Computer
 		~Computer();
 
 		// | Funzioni | 
-		std::vector<Position> exe_move(const Chessboard& cb);
-		void side_acquisition(bool flag, const Chessboard& cb);
+		std::vector<Position> exe_move(Chessboard& cb);
 
 	private:
-		Piece* rand_piece();
-		Position rand_move(Piece* piece, const Chessboard& cb);
+		Piece* rand_piece(std::vector<Piece*>& pieces);
+		Position rand_move(std::vector<std::vector<Position>>& moves, Chessboard& cb);
 
 		bool team;
-		std::vector<Piece*> pieces;
 };
 
 #endif

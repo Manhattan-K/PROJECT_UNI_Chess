@@ -136,7 +136,6 @@ CMakeFiles/ChessLib.dir/libraries/Chessboard.cpp.obj: \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/Position.h \
- D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/King.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Piece.h \
  D:/Utente/PROGETTO\ FINALE/PROJECT_UNI_Chess/Project_Files/include/pieces/Queen.h \
