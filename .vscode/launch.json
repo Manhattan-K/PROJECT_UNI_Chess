@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Scacchiera",
+            "program": "D:/Utente/PROGETTO FINALE/PROJECT_UNI_Chess/build/scacchiera.exe",
+            "request": "launch",
+            "cwd": "${fileDirname}",
+            "type": "cppdbg",
+            "args": ["pc"],
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
