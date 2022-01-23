@@ -58,7 +58,7 @@ class Computer
 
 	private:
 		Piece* rand_piece(std::vector<Piece*>& pieces);
-		Position rand_move(std::vector<std::vector<Position>>& moves, Chessboard& cb);
+		Position rand_move(std::vector<std::vector<Position>>& moves);
 
 		bool team;
 };

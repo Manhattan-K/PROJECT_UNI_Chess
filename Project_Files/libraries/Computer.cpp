@@ -78,15 +78,10 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 		pieces = board.get_liveBlack();
 	}
 	
-	
-	do
-	{
-		r_piece = rand_piece(pieces);
-	}while(!(r_piece->can_move(board)));
-
-	m_piece = r_piece->get_moves(board);
+	r_piece = rand_piece(pieces);
 	init_pos = r_piece->get_position();
-	fin_pos = rand_move(m_piece, board);
+	m_piece = r_piece->get_moves(board);
+	fin_pos = rand_move(m_piece);
 
 	std::vector<Position> move = {init_pos, fin_pos};
 	return move;
@@ -111,24 +106,11 @@ Piece* Computer::rand_piece(std::vector<Piece*>& pieces)
 		presi questi due valori, ricavo dalla pedina scelta le mosse possibili, per poi 
 		scegliere casualmente una tra queste e restituirla.
 */
-Position Computer::rand_move(std::vector<std::vector<Position>>& moves, Chessboard& cb)
+Position Computer::rand_move(std::vector<std::vector<Position>>& moves)
 {
-	Chessboard board = cb;
-	int rn = 0;
-
-	rn = rand() % 2;
-	std::vector<Position> n {};
-	if(moves[rn].size() != 0)
-	{
-		n = moves[rn];
-	}
-	else
-	{
-		int i = 1;
-		if(rn == 1) i = 0;
-		n = moves[i];
-	}
-	rn = rand() % n.size();
+	int rn = rand() % 2;
+	std::vector<Position> n = moves[rn];
+	rn = rand() % n.size();;
 	
 	return n[rn];
 }
