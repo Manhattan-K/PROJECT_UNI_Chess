@@ -67,7 +67,7 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 	Piece* r_piece {};
 	std::vector<std::vector<Position>> m_piece {};
 	bool flag = true;
-	
+
 	std::vector<Piece*> pieces {};
 	if(team)
 	{
@@ -77,7 +77,8 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 	{
 		pieces = board.get_liveBlack();
 	}
-
+	
+	
 	do
 	{
 		r_piece = rand_piece(pieces);
@@ -86,12 +87,8 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 	m_piece = r_piece->get_moves(board);
 	init_pos = r_piece->get_position();
 	fin_pos = rand_move(m_piece, board);
-	std::cout << "\n\t-><- fuori -><-\n";
 
 	std::vector<Position> move = {init_pos, fin_pos};
-	
-	while(true){}
-	
 	return move;
 }
 
@@ -131,9 +128,6 @@ Position Computer::rand_move(std::vector<std::vector<Position>>& moves, Chessboa
 		if(rn == 1) i = 0;
 		n = moves[i];
 	}
-	std::cout << "\tqua " <<n.size();
-	while(true){}
-
 	rn = rand() % n.size();
 	
 	return n[rn];

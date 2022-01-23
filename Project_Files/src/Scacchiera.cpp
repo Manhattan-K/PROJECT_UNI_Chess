@@ -270,9 +270,9 @@ int main()
         std::vector<Position> b;        
         //for(int moves = 0; moves<40 && gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2; moves++)
         //{   //scelta mossa bianco
-            std::cout << "\n\t-><- 1 -><-\n";
+            std::cout << "\n\t-><- else 1 -><-\n";
             w = white.exe_move(gameBoard);
-            std::cout << "\n\t-><- 2 -><-\n";
+            std::cout << "\n\t-><- else 2 -><-\n";
             Piece* pieceW = gameBoard.get_piece(w[0]);
             Position moveS = pieceW->get_position();
             Position moveW = w[1];
