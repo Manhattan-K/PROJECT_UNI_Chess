@@ -321,7 +321,7 @@ bool Chessboard::canMove(bool colour, Chessboard gameBoard)
 				if(matrix[r][c]->get_team() == colour)
 				{
 					std::vector<std::vector<Position>> move = matrix[r][c]->get_moves(gameBoard);
-					if(move[0].size() != 0 || move[1].size() != 1)
+					if(move[0].size() != 0 || move[1].size() != 0)
 						return true;
 				}
 	return false;

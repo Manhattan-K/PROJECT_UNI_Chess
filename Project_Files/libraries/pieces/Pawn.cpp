@@ -71,6 +71,15 @@ std::vector<std::vector<Position>> Pawn::get_moves(Chessboard& board)
 	return moves;
 }
 
+	//Overload di can_move()
+bool Pawn::can_move(Chessboard& board)
+{
+	std::vector<std::vector<Position>> moves = get_moves(board);
+	if(moves[0].size() == 0 && moves[1].size() == 0)
+		return false;
+	return true;
+}
+
 	//Overload di check_piece()
 void Pawn::check_piece(Piece* target, Position& target_pos, std::vector<std::vector<Position>>& moves)
 {

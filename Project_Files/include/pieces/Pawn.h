@@ -66,6 +66,7 @@ class Pawn : public Piece
 		//=---------------------------------------------=Funzioni di Pawn=---------------------------------------------=
 			//Overload di get_moves()
 		std::vector<std::vector<Position>> get_moves(Chessboard& board);
+		bool can_move(Chessboard& board);
 			//Funzione get della variabile moved
 		bool has_moved() { return moved; }		
 };

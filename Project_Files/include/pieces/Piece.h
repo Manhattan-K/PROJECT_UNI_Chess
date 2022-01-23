@@ -62,6 +62,8 @@ __>FUNZIONI
 	- check_piece:		Questa funzione esegue il controllo della pedina puntata da Piece* target e in base ai
 						vari casi decide se inserire la posizione nel vettore {Vettore di get_moves()} dato.
 							[La funzione pu� variare da classe a classe]
+
+	- can_move :		Restituisce un true o false in base se la pedina si può muovere, oppure se è bloccata
 */
 
 #ifndef PIECE_H
@@ -117,6 +119,7 @@ class Piece
 		//=---------------------------------------------=Funzioni di Piece:public=---------------------------------------------=
 			//Funzioni per il movimento {Descrizione funzioni all'allinizio del file}
 		virtual std::vector<std::vector<Position>> get_moves(Chessboard& board) = 0;
+		virtual bool can_move(Chessboard& board) = 0;
 
 			//Funzione che rende la pedina ingiocabile
 		void die() { pos.set_position(8, 8); alive = false; type = 0; }
