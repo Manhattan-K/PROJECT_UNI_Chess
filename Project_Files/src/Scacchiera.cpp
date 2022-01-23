@@ -27,38 +27,6 @@ void print(Chessboard gameBoard, Position start, std::string input)
     if(type == 6) std::cout<<"Torre mosso da "<<input[0]<<input[1]<<" a "<<input[3]<<input[4];
 }
 
-/*
-int main()
-{
-    std::srand(time(NULL));
-
-    Chessboard gameBoard{};
-    Position ini {4, 0};
-    Position fin {4, 5};
-
-    gameBoard.shift(ini, fin);
-    std::cout << gameBoard.to_string();
-
-    std::vector<std::vector<Position>> vec = gameBoard.get_piece(fin)->get_moves(gameBoard);
-    for(int i = 0; i < vec[0].size(); i++)
-    {
-        Position pos = vec[0][i];
-        std::cout << "\nSPOSTA:" << '(' << pos.get_letter() << ',' << pos.get_number() << ')';
-    }
-    for(int i = 0; i < vec[1].size(); i++)
-    {
-        Position pos = vec[1][i];
-        std::cout << "\nMANGIA:" << '(' << pos.get_letter() << ',' << pos.get_number() << ')';
-    }
-
-
-    std::cout << "\n\t-><- CAZZO SI Siamo qua -><-\n";
-    char ch {};
-    std::cin >> ch;
-    return 0;
-}
-*/
-
 int main()
 {
     std::srand(time(NULL));
@@ -81,8 +49,6 @@ int main()
     } while (role != 'c' && role != 'p');
 
     if(role == 'p')
-    {}
-    /*
     {
         int move = 0;
         int squad = rand()%2; // se 0 persona bianca altrimenti nera
@@ -259,7 +225,6 @@ int main()
             return 0;
         }  
     }
-    */
 
     else
     {
@@ -268,11 +233,9 @@ int main()
         black = Computer{false};
         std::vector<Position> w;
         std::vector<Position> b;        
-        //for(int moves = 0; moves<40 && gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2; moves++)
-        //{   //scelta mossa bianco
-            std::cout << "\n\t-><- else 1 -><-\n";
+        for(int moves = 0; moves<40 && gameBoard.checkRules(gameBoard) == 2 && gameBoard.par(move, gameBoard) == 2 && gameBoard.alreadySeen(moveSequences, gameBoard) == 2; moves++)
+        {   //scelta mossa bianco
             w = white.exe_move(gameBoard);
-            std::cout << "\n\t-><- else 2 -><-\n";
             Piece* pieceW = gameBoard.get_piece(w[0]);
             Position moveS = pieceW->get_position();
             Position moveW = w[1];
@@ -342,12 +305,7 @@ int main()
                 std::cout<<"Partita finita in parità";
                 return 0;
             }
-       //}
-        //return 0;
-        std::cout << "\n\t-><- Ciclo -><-\n";
+        }
+        return 0;
     }
-    std::cout << "\n\t-><- Exit -><-\n";
-    char ch {};
-    std::cin >> ch;
-    return 0;
 }

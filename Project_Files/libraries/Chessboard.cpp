@@ -234,12 +234,14 @@ Chessboard& Chessboard::operator=(Chessboard&& gameBoard)
 //distruttore
 Chessboard::~Chessboard()
 {
+	/*
 	for(int r = 0; r < 8; r++)
 		for(int c = 0; c < 8; c++)
 		{
 			delete matrix[r][c];
 			matrix[r][c] = NULL;
 		}
+	*/
 }
 
 //spostamento di una pedina
