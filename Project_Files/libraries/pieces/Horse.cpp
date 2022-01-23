@@ -62,7 +62,16 @@ std::vector<std::vector<Position>> Horse::get_moves(Chessboard& board)
 	return moves;
 }
 
-//Overload di check_piece()
+	//Overload di can_move()
+bool Horse::can_move(Chessboard& board)
+{
+	std::vector<std::vector<Position>> moves = get_moves(board);
+	if(moves[0].size() == 0 && moves[1].size() == 0)
+		return false;
+	return true;
+}
+
+	//Overload di check_piece()
 void Horse::check_piece(Piece* target, Position& target_pos, std::vector<std::vector<Position>>& moves)
 {
 	//Se la pedina � spazio vuoto inserisci la posizione nel primo vettore

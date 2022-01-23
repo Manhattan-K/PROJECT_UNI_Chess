@@ -66,6 +66,7 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 	int moves1_size = 0;
 	Piece* r_piece {};
 	std::vector<std::vector<Position>> m_piece {};
+	bool flag = true;
 	
 	std::vector<Piece*> pieces {};
 	if(team)
@@ -77,17 +78,12 @@ std::vector<Position> Computer::exe_move(Chessboard& cb)
 		pieces = board.get_liveBlack();
 	}
 
-	while(moves0_size == 0 && moves1_size == 0)
+	do
 	{
 		r_piece = rand_piece(pieces);
-		std::cout << "TIPO: " << r_piece->get_type() << '\n';
-		m_piece = r_piece->get_moves(board);
-		moves0_size = m_piece[0].size();
-		moves1_size = m_piece[1].size();
-		std::cout << moves0_size << moves1_size << '\n';
-	}
-	std::cout << moves0_size << moves1_size << '\n';
+	}while(!(r_piece->can_move(board)));
 
+	m_piece = r_piece->get_moves(board);
 	init_pos = r_piece->get_position();
 	fin_pos = rand_move(m_piece, board);
 	std::cout << "\n\t-><- fuori -><-\n";

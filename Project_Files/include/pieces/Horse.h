@@ -46,6 +46,7 @@ class Horse : public Piece
 		//=---------------------------------------------=Funzioni di Horse=---------------------------------------------=
 			//Overload di get_moves()
 		std::vector<std::vector<Position>> get_moves(Chessboard& board);
+		bool can_move(Chessboard& board);
 
 	private:
 			//Funzione per il movimento {Descrizione funzioni all'allinizio del file}

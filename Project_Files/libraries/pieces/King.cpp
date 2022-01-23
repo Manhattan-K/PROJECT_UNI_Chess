@@ -61,6 +61,15 @@ std::vector<std::vector<Position>> King::get_moves(Chessboard& board)
 	circle(cb, moves);
 	return moves;
 }
+
+	//Overload di can_move()
+bool King::can_move(Chessboard& board)
+{
+	std::vector<std::vector<Position>> moves = get_moves(board);
+	if(moves[0].size() == 0 && moves[1].size() == 0)
+		return false;
+	return true;
+}
 	
 	//Overload di check_piece()
 void King::check_piece(Piece* target, Position& target_pos, std::vector<std::vector<Position>>& moves)

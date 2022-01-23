@@ -34,6 +34,7 @@ class Space : public Piece
 		//=---------------------------------------------=Funzioni di Space=---------------------------------------------=
 			//Overload di get_moves()
 		std::vector<std::vector<Position>> get_moves(Chessboard& board);
+		bool can_move(Chessboard& board) {	return false;	}
 
 	private:
 			//Overload di check_piece()
